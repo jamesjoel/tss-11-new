@@ -1,0 +1,16 @@
+body{
+    background-color: #70ACD1;
+}
+.box{
+    height: 500px;
+    width: 700px;
+    background-color: red;
+    background-image: url("2.jpg");
+    background-repeat: no-repeat;
+    background-position: 100px 50px;
+    /*                    l    t   */
+    /*                repeat-x, repeat-y   */
+    /* background-size: 700px 500px; */
+    
+    /*                w     h   */
+}

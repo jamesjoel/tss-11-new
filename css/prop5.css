@@ -1,0 +1,19 @@
+body{
+    background-color: #706020;
+}
+.box1{
+    height: 300px;
+    width: 300px;
+    background-color: #409745;
+    float: left;
+    margin-right: 50px;
+}
+.box2{
+    float: left;
+    height: 200px;
+    width: 200px;
+    background-color: #CDAADC;
+    font-size: 18px;
+    text-align: justify;
+    padding: 50px;
+}

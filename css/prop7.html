@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <style>
+            .box{
+                height: 200px;
+                width: 200px;
+                background-color: #784512;
+                background-image: url("2.jpg");
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+
+                
+
+                border : 10px solid #000;
+                /*border-top : 20px solid red;
+                border-bottom : 20px solid red;
+                border-right : 20px solid blue;
+                border-left : 20px solid blue;*/
+                
+                border-radius: 200px;
+                transition: .5s;
+                /*             t  r  b  l      */
+            }
+            .box:hover{
+                /* border : 10px solid red; */
+                transform: rotate(360deg);
+                box-shadow: 0px 0px 20px red;
+            }
+
+
+
+            h1{
+                color : green;
+                font-size: 50px;
+                transition: 1s;
+            }
+            h1:hover{
+                color : #fff;
+                text-shadow: 0px 0px 5px blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <h1>The Stepping Stone</h1>
+    </body>
+</html>

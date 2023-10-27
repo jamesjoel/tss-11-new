@@ -1,0 +1,65 @@
+<%- include("../includes/header") %>
+<div class="container" style="min-height: 700px;">
+            <Div class="row">
+                <div class="col-md-12">
+                    <h2><%- str %></h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In pariatur adipisci sapiente reiciendis, aliquam eum dolore maxime cumque, quidem voluptate saepe enim magnam deleniti! Totam esse architecto ut iure minus?</p>
+                </div>
+            </Div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <table class="table table-info table-hover table-striped">
+                        <tr>
+                            <td>Full Name</td>
+                            <td><%- user1.name %></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><%- user1.email %></td>
+                        </tr>
+                        <tr>
+                            <td>Contact</td>
+                            <td><%- user1.con %></td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td><%- user1.city %></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <table class="table table-dark table-hover table-striped">
+                        <tr>
+                            <td>Full Name</td>
+                            <td><%- user2.name %></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td><%- user2.email %></td>
+                        </tr>
+                        <tr>
+                            <td>Contact</td>
+                            <td><%- user2.con %></td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td><%- user2.city %></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <ol>
+                        <% color.forEach((value)=>{ %>
+                            <li><%- value %></li>
+                        <% }) %>
+                    </ol>
+                </div>
+            </div>
+        </div>
+<%- include("../includes/footer") %>
+       

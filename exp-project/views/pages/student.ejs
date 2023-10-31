@@ -2,20 +2,21 @@
 <div class="container my-5" style="min-height: 700px;">
     <div class="row">
         <div class="col-md-12">
+            <form action="/save" method="post">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <h2 class="text-center">Add New Student</h2>
                     <div class="my-3">
                         <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" class="form-control"/>
+                        <input type="text" name="fullname" id="fullname" class="form-control"/>
                     </div>
                     <div class="my-3">
                         <label>Fee</label>
-                        <input type="text" class="form-control"/>
+                        <input type="text" name="fee" class="form-control"/>
                     </div>
                     <div class="my-3">
                         <label>Class</label>
-                        <select class="form-control">
+                        <select name="class" class="form-control">
                             <option>Select Class</option>
                             <% for(var i=1; i<=12; i++){ %>
 
@@ -26,17 +27,17 @@
                     </div>
                     <div class="my-3">
                         <label>Contact Number</label>
-                        <input type="text" class="form-control"/>
+                        <input name="contact" type="text" class="form-control"/>
                     </div>
                     <div class="my-3">
                         <label>Gender</label>
                         <br />
-                        <label for="male">Male</label> <input type="radio" id="male" name="gender"/>
-                        <label for="female">Female</label> <input type="radio" id="female" name="gender"/>
+                        <label for="male">Male</label> <input value="male" type="radio" id="male" name="gender"/>
+                        <label for="female">Female</label> <input value="female" type="radio" id="female" name="gender"/>
                     </div>
                     <div class="my-3">
                         <label>Address</label>
-                        <textarea class="form-control"></textarea>
+                        <textarea name="address" class="form-control"></textarea>
                     </div>
 
                     <div class="my-3">
@@ -44,6 +45,7 @@
                     </div>
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>

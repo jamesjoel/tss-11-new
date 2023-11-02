@@ -1,0 +1,48 @@
+<%- include("../includes/header") %>
+<div class="container my-5" style="min-height: 650px;">
+    <form action="/save-teacher" method="post">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h4>Add New Teacher</h4>
+            <div class="my-3">
+                <label>Name</label>
+                <input name="name" type="text" class="form-control" />
+            </div>
+            <div class="my-3">
+                <label>Salary</label>
+                <input name="salary" type="text" class="form-control" />
+            </div>
+            <div class="my-3">
+                <label>Education</label>
+                <select name="education" class="form-control" >
+                    <option>Select</option>
+                    <option>B.A.</option>
+                    <option>B.Sc.</option>
+                    <option>M.Sc.</option>
+                    <option>B.Ed.</option>
+                    <option>M.Ed.</option>
+                </select>
+            </div>
+            <div class="my-3">
+                <label>Contact</label>
+                <input name="contact" type="text" class="form-control" />
+            </div>
+            <div class="my-3">
+                <label>Address</label>
+                <textarea name="address" class="form-control" ></textarea>
+            </div>
+            <div class="my-3">
+                <label>Gender</label>
+                <br />
+                Male <input type="radio" value="male" name="gender"/>
+                Female <input type="radio" value="female" name="gender"/>
+            </div>
+            <div class="my-3">
+                
+                <input type="submit" class="btn btn-dark" value="Add" />
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+<%- include("../includes/footer") %>

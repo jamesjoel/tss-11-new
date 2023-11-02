@@ -1,5 +1,12 @@
 const express = require("express");
 const app = express();
+require("./config/db");
+
+let Teacher = require("./models/Teacher");
+let Student = require('./models/Student');
+
+
+
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/assets"));
@@ -21,7 +28,18 @@ app.get("/student", (req, res)=>{
 })
 
 app.post("/save", (req, res)=>{
-    console.log(req.body);
+    // console.log(req.body);
+    Student.create(req.body);
+    res.redirect("/");
+})
+
+app.get("/teacher", (req, res)=>{
+    res.render("pages/teacher");
+})
+
+app.post("/save-teacher", (req, res)=>{
+    Teacher.create(req.body);
+    res.redirect("/");
 })
 
 

@@ -1,25 +1,34 @@
 const express = require("express");
 const app = express();
-require("./config/db");
+
 
 let Teacher = require("./models/Teacher");
 let Student = require('./models/Student');
+
+let Emp = require("./models/Employee");
 
 
 
 
 app.set("view engine", "ejs");
-app.use(express.static(__dirname+"/assets"));
 
+
+app.use(express.static(__dirname+"/assets"));
 app.use(express.json())
 app.use(express.urlencoded({ extended : true }));
 
 app.get("/", (req, res)=>{
     res.render("pages/home");
 })
+
+
 app.get("/about", (req, res)=>{
+    
     res.render("pages/about");
 })
+
+
+
 app.get("/contact", (req, res)=>{
     res.render("pages/contact");
 })
@@ -40,6 +49,14 @@ app.get("/teacher", (req, res)=>{
 app.post("/save-teacher", (req, res)=>{
     Teacher.create(req.body);
     res.redirect("/");
+})
+
+
+app.post("/save-emp", (req, res)=>{
+
+    // console.log(req.body);
+    Emp.create(req.body);
+    res.redirect("/about");
 })
 
 

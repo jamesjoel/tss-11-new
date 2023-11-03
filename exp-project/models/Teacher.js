@@ -1,4 +1,5 @@
-let mongoose = require("mongoose");
+require("../config/db");
+let mongoose = require("mongoose"); 
 let TeacherSchema = mongoose.Schema({
     name : String,
     salary : Number,

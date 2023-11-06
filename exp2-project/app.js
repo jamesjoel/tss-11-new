@@ -1,16 +1,14 @@
 const express = require("express");
 const app = express();
+const routes = require("./routes/AllRoutes");
+
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/assets"));
+app.use(express.json());
+app.use(express.urlencoded({ extended : true }));
 
-app.get("/", (req, res)=>{
-    res.render("pages/home");
-})
-app.get("/about", (req, res)=>{
-    res.render("pages/about");
-})
-
+app.use(routes);
 
 
 const port = process.env.PORT || 3000;

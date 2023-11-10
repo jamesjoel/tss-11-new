@@ -1,0 +1,73 @@
+
+<%-include('../includes/header')%>
+    <div class="container-fluid">
+        <div class="container my-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class=" text-center" style="font-size: 60px;">Contact Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5 "style="min-height:700px">
+        <div class="row">
+            <!-- <div class="col-md-4">
+                <div class="card bg-info" style="height: 400px;">
+                    <div class="card-body my-3">
+                        <h2 class="text-light ms-5">call Us</h2>
+                        <h5 class="text-light ms-5 ">
+                            <i class="fa fa-phone" aria-hidden="true"></i>+1297655377
+                        </h5>
+                        <h2 class="text-light ms-5">Email Us</h2>
+                        <h5 class="text-light ms-5 ">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>ritik45@gmail.com
+                        </h5>
+                        <h2 class="text-light ms-5">Address</h2>
+                        <h5 class="text-light ms-5 ">225 MG-road Indore</h5>
+                        <h2 class="text-light ms-5">Follow </h2>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <form action="/save" method="post">
+                            <div class=" my-3">
+                                <label for="name" class="my-3">Name</label>
+                                <input type="" class="form-control" name="fullname" id="" placeholder="name">
+                            </div>
+                            <div class="my-3">
+                                <label for=" fee" class="">fee</label>
+                                <input type="" class="form-control" id="" name="fee" placeholder="fee">
+                            </div>
+                            <div>
+                                <select name="class"  class="form-control">
+                                    <option value="">select</option>
+                                    <% for(i=1; i<=12;i++){%> 
+                                        <option><%-i%></option>
+
+                                        <%}%>
+                                </select>
+                            </div>
+                            <div class="my-3">
+                                <label for=" contact" class="">contact</label>
+                                <input type="" class="form-control" id="" name="contact" placeholder="contact">
+                            </div>
+                            <div class="my-3">
+                                <label for="male"> Male</label> <input type="radio" name="gender" id="male" value="male">
+                                <label for="female">Female</label> <input type="radio" name="gender" id="female" value="female">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <%-include("../includes/footer")%>

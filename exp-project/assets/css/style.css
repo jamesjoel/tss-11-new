@@ -160,10 +160,10 @@ a {
 
 .btn {
   font-weight: 600;
-  padding: 12px 30px;
+  padding: 5px 20px;
   border-radius: 30px;
   color: #ffffff;
-  background: #2f2f2f;
+  
   border-color: #2f2f2f; }
   .btn:hover {
     color: #ffffff;

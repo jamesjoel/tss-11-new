@@ -1,0 +1,45 @@
+<%- include("../includes/header") %>
+
+<div class="container my-5" style="min-height: 700px;" >
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form action="/patient/update/<%- result._id %>" method="post">
+                <div class="my-3">
+                    <label for="Fullname">Fullname</label>
+                <input type="text" value="<%- result.fullname %>" name="fullname" id="Fullname" class="form-control">
+                </div>
+
+                <div class="my-3">
+                <label for="Email">Email</label>
+                <input type="text" value="<%- result.Email %>" name="Email" id="Email" class="form-control">
+                </div>
+
+                <div class="my-3">
+                <label for="contact">Contact</label>
+                <input type="text" value="<%- result.contact %>" name="contact" id="Contact" class="form-control">
+                </div>
+
+                <label >gender</label>
+                <br>
+                <div class="my-3">
+                Male<input type="radio" name="gender" id="male" <% if(result.gender=="male"){%> checked <% } %> value="male" >
+                Female<input type="radio" name="gender" id="Female" <% if(result.gender=="Female"){%> checked <% } %> value="Female" >
+                </div>
+                <div class="my-3">
+                    <label for="contact">Adress</label>
+                    <textarea class="form-control" name="Adress" id="Adress"><%- result.Adress %></textarea>
+                    </div>
+                
+                <!-- <button class="btn btn-info">submit</button> -->
+                <div class="my-3">
+                    <input type="submit" class="btn btn-info" value="update-student"/>
+                </div>
+                
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<%- include("../includes/footer") %>

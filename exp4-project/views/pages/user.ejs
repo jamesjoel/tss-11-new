@@ -1,0 +1,32 @@
+<%- include("../includes/header") %>
+<div class="container my-4" style="min-height: 700px;">
+    <form action="/user/save" method="post">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Add New User</h3>
+            <label>Full Name</label>
+            <input type="text" name="name" class="form-control" />
+            <label>Email</label>
+            <input type="text" name="email" class="form-control" />
+            <label>Country</label>
+            <select class="form-control" name="country">
+                <option>Select</option>
+                <% result.forEach((value)=>{ %>
+                    <option><%- value.name %></option>
+                <% }) %>
+            </select>
+            <label>Contact</label>
+            <input type="text" name="contact" class="form-control" />
+            <label>Address</label>
+            <textarea class="form-control" name="address"></textarea>
+            <label>Gender</label>
+            Male <input type="radio" name="gender" value="male" />
+            Female <input type="radio" name="gender" value="female" />
+            <br />
+            <input type="submit" class="btn btn-primary" value="Add" />
+        </div>
+    </div>
+    </form>
+
+</div>
+<%- include("../includes/footer") %>

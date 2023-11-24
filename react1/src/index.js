@@ -1,15 +1,11 @@
 import React from 'react'; 
 import ReactDOM from 'react-dom/client';
-import Demo, {A} from './Demo';
-import Box from './Box';
+import App from './App';
 
-
-
-const root = ReactDOM.createRoot(document.getElementById('hello'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <Demo />
-    <Box />
+    <App />
   </>
 );
 

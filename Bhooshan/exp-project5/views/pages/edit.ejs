@@ -1,0 +1,36 @@
+<%- include("../includes/header") %>
+
+<div class="container my-5" style="min-height: 700px;">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Edit Teacher</h2>
+            <form action="/teacher/update/<%- teacher._id %>" method="post">
+                <label>Fullname</label>
+                <input type="text" name="name" value="<%- teacher.name %>" class="form-control"/>
+                <label>Email</label>
+                <input type="text"  name="email" value="<%- teacher.email %>" class="form-control"/>
+                <label>Contact</label>
+                <input type="text" name="contact" value="<%- teacher.contact %>" class="form-control"/>
+                <label>Country</label>
+                <select name="country" class="form-control">
+                    <option>option</option>
+                    <% result.forEach((value)=>{ %>
+                        <option <% if(teacher.country==value.country) {%> selected <% } %> > <%- value.country %></option>
+                       <% }) %>
+                </select>
+                <label>Gender</label> <br/>
+                Male<input type="radio" name="gender" <% if(teacher.gender=="male"){%> checked <% } %> value="male"/>
+                Female<input type="radio" name="gender"<% if(teacher.gender=="female"){%> checked <% } %> value="female"/>
+                <br>
+                <label>Address</label>
+                <textarea name="address" class="form-control"><%- teacher.address %></textarea>
+                <br/>
+
+                <input type="submit" class="btn btn-info btn-sm" value="update-teacher"/>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<%- include("../includes/footer") %>

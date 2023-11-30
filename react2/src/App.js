@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
         <Header />
-            <div  className='container' style={{minHeight : "700px"}}>
+            <div style={{minHeight : "700px"}}>
                 <AllRoutes />
             </div>
         <Footer />

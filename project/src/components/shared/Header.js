@@ -35,6 +35,8 @@ const Header = () => {
 								
 								<li><NavLink to="/">Home</NavLink></li>
 								<li><NavLink to="/about">About</NavLink></li>
+								<li><NavLink to="/contact">Contact</NavLink></li>
+								<li><NavLink to="/demo">Demo</NavLink></li>
 								<li>
 									<div class="header-icons">
 										<NavLink class="shopping-cart" to="/cart"><i class="fas fa-shopping-cart"></i></NavLink>

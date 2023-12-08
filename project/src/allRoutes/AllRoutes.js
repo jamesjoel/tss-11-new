@@ -6,6 +6,7 @@ import Product from '../components/feature/Product';
 import Cart from '../components/feature/Cart'
 import Contact from '../components/feature/Contact';
 import Demo from '../components/feature/Demo';
+import Signup from '../components/feature/Signup';
 
 const AllRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AllRoutes = () => {
         <Route path='product' element={<Product />} />
         <Route path='contact' element={<Contact />} />
         <Route path='demo' element={<Demo />} />
+        <Route path='signup' element={<Signup />} />
         <Route path='cart' element={<Cart />} />
     </Routes>
   )

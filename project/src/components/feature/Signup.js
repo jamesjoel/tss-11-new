@@ -5,13 +5,42 @@ const Signup = () => {
 
 
     let [city, setCity] = useState([]);
+    let [state, setState] = useState([]);
+    let [country, setCountry] = useState([]);
+
+    let [code, setCode] = useState("");
 
     useEffect(()=>{
-        axios.get("http://localhost:8080/api/city").then(response=>{
+        axios.get("http://localhost:8080/api/country").then(response=>{
+            setCountry(response.data);
+        })
+    },[])
+
+
+    useEffect(()=>{
+        axios.get("http://localhost:8080/api/city/state").then(response=>{
+            setState(response.data);
+        })
+    },[])
+ 
+
+    let getCity = (event)=>{
+        // console.log("******", event.target.value);
+        let x = event.target.value;
+        axios.get("http://localhost:8080/api/city/getcity/"+x).then(response=>{
             // console.log(response.data);
             setCity(response.data);
         })
-    },[])
+    }
+
+    let getCode = (event)=>{
+        let x = event.target.value;
+        axios.get("http://localhost:8080/api/country/getcode/"+x).then(response=>{
+            // console.log(response.data);
+            setCode(response.data.dial_code);
+        })
+    }
+
 
   return (
     <div className="container my-5" style={{minHeight : "700px"}}>
@@ -45,6 +74,16 @@ const Signup = () => {
                             <textarea className='form-control' ></textarea>
                         </div>
                         <div className='my-3'>
+                            <label>State</label>
+                            <select onChange={(event)=>getCity(event)} className='form-control'>
+                                <option>Select</option>
+                                {
+                                    state.map(value=><option>{value}</option>)
+                                }
+                            </select>
+                        </div>
+
+                        <div className='my-3'>
                             <label>City</label>
                             <select className='form-control' >
                                 <option>Select</option>
@@ -61,7 +100,25 @@ const Signup = () => {
                         </div>
                         <div className='my-3'>
                             <label>Contact</label>
-                            <input type='text' className='form-control' />
+                            <div className='row'>
+                                <div className='col-md-3'>
+                                    <select onChange={(event)=>getCode(event)} className='form-control'>
+                                        <option>Country</option>
+                                        {
+                                            country.map(value=><option>{value.name}</option>)
+                                        }
+                                    </select>
+
+                                </div>
+                                <div className='col-md-3'>
+                                    <input type='text' value={code} placeholder='Code' className='form-control' />
+
+                                </div>
+                                <div className='col-md-6'>
+
+                                    <input type='text' placeholder='Contact' className='form-control' />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='card-footer'>

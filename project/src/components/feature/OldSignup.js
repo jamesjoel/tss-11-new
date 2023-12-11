@@ -1,32 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import { useFormik } from 'formik';
 
-const Signup = () => {
-
-    let signupForm = useFormik({ 
-        initialValues : {
-            name : "",
-            username : "",
-            password : "",
-            repassword : "",
-            contact : "",
-            state : "",
-            city : "",
-            gender : "",
-            address : ""
-        },
-        onSubmit : (formdata)=>{
-            console.log("*******", formdata);
-        }
-     });
+const OldSignup = () => {
 
 
     let [city, setCity] = useState([]);
     let [state, setState] = useState([]);
-    
+    let [country, setCountry] = useState([]);
 
-    
+    let [code, setCode] = useState("");
+
+    useEffect(()=>{
+        axios.get("http://localhost:8080/api/country").then(response=>{
+            setCountry(response.data);
+        })
+    },[])
 
 
     useEffect(()=>{
@@ -45,12 +33,17 @@ const Signup = () => {
         })
     }
 
-    
+    let getCode = (event)=>{
+        let x = event.target.value;
+        axios.get("http://localhost:8080/api/country/getcode/"+x).then(response=>{
+            // console.log(response.data);
+            setCode(response.data.dial_code);
+        })
+    }
 
 
   return (
     <div className="container my-5" style={{minHeight : "700px"}}>
-        <form onSubmit={signupForm.handleSubmit}>
         <div className="row">
             <div className="col-md-6 offset-md-3">
 
@@ -62,27 +55,27 @@ const Signup = () => {
                     <div className='card-body'>
                         <div className='my-3'>
                             <label>Full Name</label>
-                            <input type='text' onChange={signupForm.handleChange} name='name' className='form-control' />
+                            <input type='text' className='form-control' />
                         </div>
                         <div className='my-3'>
                             <label>Email/Username</label>
-                            <input type='text' onChange={signupForm.handleChange} name='username' className='form-control' />
+                            <input type='text' className='form-control' />
                         </div>
                         <div className='my-3'>
                             <label>Password</label>
-                            <input type='password' onChange={signupForm.handleChange} name='password' className='form-control' />
+                            <input type='password' className='form-control' />
                         </div>
                         <div className='my-3'>
                             <label>Re-Password</label>
-                            <input type='password' onChange={signupForm.handleChange} name='repassword' className='form-control' />
+                            <input type='password' className='form-control' />
                         </div>
                         <div className='my-3'>
                             <label>Address</label>
-                            <textarea className='form-control' onChange={signupForm.handleChange} name='address' ></textarea>
+                            <textarea className='form-control' ></textarea>
                         </div>
                         <div className='my-3'>
                             <label>State</label>
-                            <select onChange={(e)=>{ getCity(e); signupForm.handleChange(e) }} name='state' className='form-control'>
+                            <select onChange={(event)=>getCity(event)} className='form-control'>
                                 <option>Select</option>
                                 {
                                     state.map(value=><option>{value}</option>)
@@ -92,7 +85,7 @@ const Signup = () => {
 
                         <div className='my-3'>
                             <label>City</label>
-                            <select className='form-control' onChange={signupForm.handleChange} name='city'>
+                            <select className='form-control' >
                                 <option>Select</option>
                                 {
                                     city.map(value=><option>{value.name}</option>)
@@ -101,16 +94,31 @@ const Signup = () => {
                         </div>
                         <div className='my-3'>
                             <label>Gender</label><br />
-                            Male&nbsp;&nbsp;&nbsp;<input type='radio' onChange={signupForm.handleChange} name='gender' value="male"/>
+                            Male&nbsp;&nbsp;&nbsp;<input type='radio' />
                             &nbsp;&nbsp;&nbsp;
-                            Female&nbsp;&nbsp;&nbsp;<input type='radio' onChange={signupForm.handleChange} name='gender' value="female"/>
+                            Female&nbsp;&nbsp;&nbsp;<input type='radio' />
                         </div>
                         <div className='my-3'>
                             <label>Contact</label>
-                            
+                            <div className='row'>
+                                <div className='col-md-3'>
+                                    <select onChange={(event)=>getCode(event)} className='form-control'>
+                                        <option>Country</option>
+                                        {
+                                            country.map(value=><option>{value.name}</option>)
+                                        }
+                                    </select>
 
-                                    <input type='text' onChange={signupForm.handleChange} name='contact' placeholder='Contact' className='form-control' />
-                            
+                                </div>
+                                <div className='col-md-3'>
+                                    <input type='text' value={code} placeholder='Code' className='form-control' />
+
+                                </div>
+                                <div className='col-md-6'>
+
+                                    <input type='text' placeholder='Contact' className='form-control' />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className='card-footer'>
@@ -119,9 +127,8 @@ const Signup = () => {
                 </div>
             </div>
         </div>
-        </form>
     </div>
   )
 }
 
-export default Signup
+export default OldSignup

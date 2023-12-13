@@ -1,25 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { useFormik } from 'formik';
-import * as YUP from 'yup'
 
 
-const SignupSchema = YUP.object({
-    name : YUP.string().required("Insert Your Full Name"),
-    username : YUP.string().required("Insert Your Username/Email"),
-    password : YUP.string().required("Insert Your Password"),
-    repassword : YUP.string().required("Insert Your Re-Password"),
-    contact : YUP.string().required("Insert Your Contact"),
-    address : YUP.string().required("Insert Your Address"),
-    state : YUP.string().required("Select Your State"),
-    city : YUP.string().required("Select Your City"),
-    gender : YUP.string().required("Select Your Gender"),
-});
-
+import SignupSchema from '../../schemas/SignupSchema';
+import { API_URL } from '../../util/API_URL';
 
 
 const Signup = () => {
-
     let signupForm = useFormik({ 
         validationSchema : SignupSchema,
         initialValues : {
@@ -34,8 +22,11 @@ const Signup = () => {
             address : ""
         },
         onSubmit : (formdata)=>{
-            console.log("*******", formdata);
+            axios.post(`${API_URL}signup`, formdata).then(response=>{
+                console.log(response.data);
+            })
         }
+        // localhost:8080/api/signup
      });
 
 
@@ -47,7 +38,7 @@ const Signup = () => {
 
 
     useEffect(()=>{
-        axios.get("http://localhost:8080/api/city/state").then(response=>{
+        axios.get(`${API_URL}city/state`).then(response=>{
             setState(response.data);
         })
     },[])
@@ -56,7 +47,7 @@ const Signup = () => {
     let getCity = (event)=>{
         // console.log("******", event.target.value);
         let x = event.target.value;
-        axios.get("http://localhost:8080/api/city/getcity/"+x).then(response=>{
+        axios.get(`${API_URL}city/getcity/${x}`).then(response=>{
             // console.log(response.data);
             setCity(response.data);
         })

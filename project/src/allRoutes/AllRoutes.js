@@ -7,12 +7,14 @@ import Cart from '../components/feature/Cart'
 import Contact from '../components/feature/Contact';
 import Demo from '../components/feature/Demo';
 import Signup from '../components/feature/Signup';
+import Login from '../components/feature/Login';
 
 const AllRoutes = () => {
   return (
     <Routes>
         <Route path='' element={<Home />} />
         <Route path='about' element={<About />} />
+        <Route path='login' element={<Login />} />
         <Route path='product' element={<Product />} />
         <Route path='contact' element={<Contact />} />
         <Route path='demo' element={<Demo />} />

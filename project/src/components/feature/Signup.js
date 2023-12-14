@@ -5,9 +5,11 @@ import { useFormik } from 'formik';
 
 import SignupSchema from '../../schemas/SignupSchema';
 import { API_URL } from '../../util/API_URL';
+import { useNavigate } from 'react-router-dom'
 
 
 const Signup = () => {
+    let navigate = useNavigate();
     let signupForm = useFormik({ 
         validationSchema : SignupSchema,
         initialValues : {
@@ -23,7 +25,10 @@ const Signup = () => {
         },
         onSubmit : (formdata)=>{
             axios.post(`${API_URL}signup`, formdata).then(response=>{
-                console.log(response.data);
+                if(response.data.success==true)
+                {
+                    navigate("/login");
+                }
             })
         }
         // localhost:8080/api/signup

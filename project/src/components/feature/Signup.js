@@ -44,6 +44,7 @@ const Signup = () => {
 
     useEffect(()=>{
         axios.get(`${API_URL}city/state`).then(response=>{
+            
             setState(response.data);
         })
     },[])
@@ -114,7 +115,7 @@ const Signup = () => {
                             <select onChange={(e)=>{ getCity(e); signupForm.handleChange(e) }} name='state' className={'form-control ' + (signupForm.errors.state && signupForm.touched.state ? 'is-invalid' : '')}>
                                 <option>Select</option>
                                 {
-                                    state.map(value=><option>{value}</option>)
+                                    state.map((value, index)=><option key={index}>{value}</option>)
                                 }
                             </select>
                             {
@@ -127,7 +128,7 @@ const Signup = () => {
                             <select className={'form-control ' + (signupForm.errors.city && signupForm.touched.city ? 'is-invalid' : '')} onChange={signupForm.handleChange} name='city'>
                                 <option>Select</option>
                                 {
-                                    city.map(value=><option>{value.name}</option>)
+                                    city.map(value=><option key={value._id}>{value.name}</option>)
                                 }
                             </select>
                             {

@@ -40,9 +40,9 @@ const Header = () => {
 								<li><NavLink to="/login">Login</NavLink></li>
 								<li><NavLink to="/demo">Demo</NavLink></li>
 								<li>
-									<div class="header-icons">
-										<NavLink class="shopping-cart" to="/cart"><i class="fas fa-shopping-cart"></i></NavLink>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+									<div className="header-icons">
+										<NavLink className="shopping-cart" to="/cart"><i className="fas fa-shopping-cart"></i></NavLink>
+										<a className="mobile-hide search-bar-icon" href="#"><i className="fas fa-search"></i></a>
 									</div>
 								</li>
 							</ul>

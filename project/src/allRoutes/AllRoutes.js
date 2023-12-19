@@ -8,6 +8,7 @@ import Contact from '../components/feature/Contact';
 import Demo from '../components/feature/Demo';
 import Signup from '../components/feature/Signup';
 import Login from '../components/feature/Login';
+import Logout from '../components/feature/Logout';
 
 const AllRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AllRoutes = () => {
         <Route path='' element={<Home />} />
         <Route path='about' element={<About />} />
         <Route path='login' element={<Login />} />
+        <Route path='logout' element={<Logout />} />
         <Route path='product' element={<Product />} />
         <Route path='contact' element={<Contact />} />
         <Route path='demo' element={<Demo />} />

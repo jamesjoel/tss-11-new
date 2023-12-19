@@ -19,8 +19,11 @@ const Login = () => {
         onSubmit : (formdata)=>{
             axios.post(`${API_URL}auth`, formdata).then(response=>{
 
+                //console.log(response.data);
+
                 if(response.data.success == true)
                 {
+                    localStorage.setItem("access-token", response.data.token)
                     navigate("/");
                 }
 
@@ -85,6 +88,7 @@ export default Login
         2. if username is correct  and password  incorrect then you receive
             a object { success : false, type : 2}
         3. if username and password both are correct then you reve
-            a object {success : true}
+            a object {success : true, token : "any token"}
+        */
 
-*/
+// eyJjYyI6eyJ0dGwiOjE3MDI5NzA1ODEsInZhbCI6IlUyRnRaVk5wZEdVOVRHRjRPdz09In0sImRkdGMiOnsidHRsIjoxNzAyOTcwNTgxLCJ2YWwiOiIxIn19

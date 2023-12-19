@@ -36,9 +36,21 @@ const Header = () => {
 								<li><NavLink to="/">Home</NavLink></li>
 								<li><NavLink to="/about">About</NavLink></li>
 								<li><NavLink to="/contact">Contact</NavLink></li>
-								<li><NavLink to="/signup">Signup</NavLink></li>
-								<li><NavLink to="/login">Login</NavLink></li>
-								<li><NavLink to="/demo">Demo</NavLink></li>
+
+								{
+									localStorage.getItem("access-token") ? 
+									<>
+										<li><NavLink to="/my-account">My Account</NavLink></li>
+										<li><NavLink to="/logout">Logout</NavLink></li>
+									</> 
+									: 
+									<>
+										<li><NavLink to="/signup">Signup</NavLink></li>
+										<li><NavLink to="/login">Login</NavLink></li>
+									</>
+								}
+								
+								
 								<li>
 									<div className="header-icons">
 										<NavLink className="shopping-cart" to="/cart"><i className="fas fa-shopping-cart"></i></NavLink>

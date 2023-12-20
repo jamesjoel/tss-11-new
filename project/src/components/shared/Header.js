@@ -40,7 +40,7 @@ const Header = () => {
 								{
 									localStorage.getItem("access-token") ? 
 									<>
-										<li><NavLink to="/my-account">My Account</NavLink></li>
+										<li><NavLink to="/my-profile">My Profile</NavLink></li>
 										<li><NavLink to="/logout">Logout</NavLink></li>
 									</> 
 									: 

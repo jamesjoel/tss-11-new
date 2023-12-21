@@ -11,6 +11,8 @@ import Demo4 from '../components/featured/Demo4'
 import Demo5 from '../components/featured/Demo5'
 import Demo6 from '../components/featured/Demo6'
 import Demo8 from '../components/featured/Demo8'
+import Profile from '../components/featured/Profile'
+import Logout from '../components/featured/Logout'
 
 const AllRoutes = () => {
   return (
@@ -19,6 +21,8 @@ const AllRoutes = () => {
                     <Route path="about" element={<About />}/>
                     <Route path="contact" element={<Contact />}/>
                     <Route path="login" element={<Login />}/>
+                    <Route path="profile" element={<Profile />}/>
+                    <Route path="logout" element={<Logout />}/>
                     <Route path='demo1' element={<Demo1 />} />
                     <Route path='demo2' element={<Demo2 />} />
                     <Route path='demo3' element={<Demo3 />} />

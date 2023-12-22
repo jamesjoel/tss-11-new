@@ -14,10 +14,25 @@ const Header = () => {
                 <li className="nav-item">
                     <NavLink className="nav-link" to="/">Home</NavLink>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="/about">About</a>
-                </li>
-                <li className="nav-item">
+                {
+                    localStorage.getItem("access-token") 
+                    ?
+                    <>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/profile">Profile</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/logout">Logout</NavLink>
+                        </li>
+                    </> 
+                    :
+
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/login">Login</NavLink>
+                    </li>
+                }
+                
+                {/* <li className="nav-item">
                     <NavLink className="nav-link" to="/contact">Contact</NavLink>
                 </li>
                 <li className="nav-item">
@@ -43,7 +58,7 @@ const Header = () => {
                 </li>
                 <li className="nav-item">
                     <NavLink className="nav-link" to="/demo8">Demo8</NavLink>
-                </li>
+                </li> */}
                 
             </ul>
             </div>

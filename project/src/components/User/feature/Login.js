@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import { useFormik } from 'formik'
-import LoginSchema from '../../schemas/LoginSchema'
+import LoginSchema from '../../../schemas/LoginSchema'
 import axios from 'axios';
-import {API_URL} from '../../util/API_URL';
+import {API_URL} from '../../../util/API_URL';
 import {useNavigate} from 'react-router-dom'
 
 const Login = () => {

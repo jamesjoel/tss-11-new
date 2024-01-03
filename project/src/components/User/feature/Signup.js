@@ -3,8 +3,8 @@ import axios from 'axios'
 import { useFormik } from 'formik';
 
 
-import SignupSchema from '../../schemas/SignupSchema';
-import { API_URL } from '../../util/API_URL';
+import SignupSchema from '../../../schemas/SignupSchema';
+import { API_URL } from '../../../util/API_URL';
 import { useNavigate } from 'react-router-dom'
 
 

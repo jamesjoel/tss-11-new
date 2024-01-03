@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
-import {API_URL} from '../../util/API_URL';
+import {API_URL} from '../../../util/API_URL';
 const MyProfile = () => {
     let [user, setUser] = useState({});
     let navigate = useNavigate();

@@ -5,6 +5,7 @@ routes.use("/api/country", (require("../controllers/CountryController")));
 routes.use("/api/signup", (require("../controllers/SignupController")));
 routes.use("/api/auth", (require("../controllers/AuthController")));
 routes.use("/api/user-profile", (require("../controllers/UserProfileController")));
+routes.use("/api/admin-auth", require("../controllers/AdminAuthController"));
 
 // routes.use("/about", require("../controllers/AboutController"));
 

@@ -731,10 +731,14 @@ nav.main-menu li a {
   -o-transition: 0.3s;
   transition: 0.3s;
 }
-
-ul.navbar-nav {
-  margin: 0 auto;
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0; /* remove the gap so it doesn't close */
 }
+
+/* ul.navbar-nav {
+  margin: 0 auto;
+} */
 
 .search-area {
   position: fixed;

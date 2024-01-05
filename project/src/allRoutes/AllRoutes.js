@@ -14,6 +14,16 @@ import UserModule from '../modules/UserModule'
 import AdminModule from '../modules/AdminModule'
 import AdminLogin from '../components/Admin/feature/Login'
 import Dashboard from '../components/Admin/feature/Dashboard';
+import AdminLogout from '../components/Admin/feature/Logout'
+import AdminProduct from '../components/Admin/feature/Product'
+import ProductList from '../components/Admin/feature/ProductList'
+import Category from '../components/Admin/feature/Category'
+import CategoryList from '../components/Admin/feature/CategoryList'
+import SubCategory from '../components/Admin/feature/SubCategory'
+import SubCategoryList from '../components/Admin/feature/SubCategoryList'
+import Users from '../components/Admin/feature/Users'
+import AdminProtectedModule from '../modules/AdminProtectedModule';
+
 
 
 const AllRoutes = () => {
@@ -35,7 +45,17 @@ const AllRoutes = () => {
 
         <Route path='admin' element={<AdminModule />}>
           <Route path='' element={<AdminLogin />} />
-          <Route path='dashboard' element={<Dashboard />} />
+          <Route path='' element={<AdminProtectedModule />}>
+                <Route path='dashboard' element={<Dashboard />} />
+                <Route path='product' element={<AdminProduct />} />
+                <Route path='product/list' element={<ProductList />} />
+                <Route path='category' element={<Category />} />
+                <Route path='category/list' element={<CategoryList />} />
+                <Route path='sub-category' element={<SubCategory />} />
+                <Route path='sub-category/list' element={<SubCategoryList />} />
+                <Route path='users' element={<Users />} />
+                <Route path='logout' element={<AdminLogout />} />
+          </Route>
         </Route>
     </Routes>
   )

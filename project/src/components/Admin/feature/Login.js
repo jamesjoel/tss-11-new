@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useFormik} from 'formik';
 import AdminLoginSchema from '../../../schemas/AdminLoginSchema'
 import { API_URL } from '../../../util/API_URL';
@@ -9,6 +9,13 @@ const Login = () => {
 
   let [errMsg, setErrMsg] = useState("");
   let navigate = useNavigate();
+
+
+  useEffect(()=>{
+    if(localStorage.getItem("admin-token")){
+      navigate("/admin/dashboard");
+    }
+  },[])
 
   let loginForm = useFormik({
     validationSchema : AdminLoginSchema,
@@ -46,7 +53,7 @@ const Login = () => {
           <div className="col-md-6 offset-md-3">
             <div className="card my-5">
               <div className="card-header">
-                <h4>Admin Login</h4>
+                <h4>Administator Login</h4>
               </div>
               <div className="card-body">
                 <div className="form-group">

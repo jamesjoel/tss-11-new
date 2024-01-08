@@ -1,7 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
+import axios from 'axios'
+import {API_URL} from '../../../util/API_URL'
 
 const Header = () => {
+
+	let [allCate, setAllCate] = useState([]);
+
+	useEffect(()=>{
+		axios.get(`${API_URL}category`).then(response=>{
+			setAllCate(response.data.result);
+		})
+	},[])
+
   return (
     <div className="top-header-area" id="sticker">
 		<div className="container">
@@ -21,17 +32,7 @@ const Header = () => {
 							<ul>
 								
 								
-								{/* <li><a href="#">Pages</a>
-									<ul className="sub-menu">
-										<li><a href="404.html">404 page</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="contact.html">Contact</a></li>
-										<li><a href="news.html">News</a></li>
-										<li><a href="shop.html">Shop</a></li>
-									</ul>
-								</li> */}
+								
 								
 								<li><NavLink to="/">Home</NavLink></li>
 								<li><NavLink to="/about">About</NavLink></li>
@@ -50,7 +51,19 @@ const Header = () => {
 									</>
 								}
 								
-								
+								<li><a href="#">Categories</a>
+									<ul className="sub-menu">
+										{
+											allCate.map((value, index)=>{
+												return(
+
+													<li key={index}><NavLink to="">{value.name}</NavLink></li>
+												)
+											})
+										}
+
+									</ul>
+								</li>
 								<li>
 									<div className="header-icons">
 										<NavLink className="shopping-cart" to="/cart"><i className="fas fa-shopping-cart"></i></NavLink>

@@ -1,0 +1,8 @@
+div.show .navbar-nav{
+    background-color: #253039;
+}
+div.show .navbar-nav .nav-item .nav-link{
+    padding: 10px 15px !important;
+    color: #fff !important;
+    border-bottom: 1px solid #fff;
+}

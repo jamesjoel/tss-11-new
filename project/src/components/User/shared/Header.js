@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
 import axios from 'axios'
 import {API_URL} from '../../../util/API_URL'
+import './Header.css';
 
 const Header = () => {
 
@@ -14,72 +15,33 @@ const Header = () => {
 	},[])
 
   return (
-    <div className="top-header-area" id="sticker">
-		<div className="container">
-			<div className="row">
-				<div className="col-lg-12 col-sm-12 text-center">
-					<div className="main-menu-wrap">
-						
-						<div className="site-logo">
-							<a href="index.html">
-								<img src="/assets/img/logo.png" alt="" />
-							</a>
-						</div>
-						
+    <nav className="navbar navbar-expand-md sticky-wrapper navbar-light">
+  
+		<div className='container'>
+		<a className="navbar-brand" href="#">
+			<img src="/assets/img/logo.png" alt="" />
+		</a>
+	<button style={{backgroundColor : "#F28123"}} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    	<span className="navbar-toggler-icon"></span>
+  	</button>
+  
+  <div className="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+    <ul className="navbar-nav">
+      <li className="nav-item">
+        <NavLink className="nav-link" to="/">Home</NavLink>
+      </li>
+      <li className="nav-item dropdown">
+        <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="#">Category</NavLink>
+		<div className='dropdown-menu'>
+        	<NavLink className="dropdown-item" to="/category/home">Home Appliance</NavLink>
 
-						
-						<nav className="main-menu">
-							<ul>
-								
-								
-								
-								
-								<li><NavLink to="/">Home</NavLink></li>
-								<li><NavLink to="/about">About</NavLink></li>
-								<li><NavLink to="/contact">Contact</NavLink></li>
-
-								{
-									localStorage.getItem("access-token") ? 
-									<>
-										<li><NavLink to="/my-profile">My Profile</NavLink></li>
-										<li><NavLink to="/logout">Logout</NavLink></li>
-									</> 
-									: 
-									<>
-										<li><NavLink to="/signup">Signup</NavLink></li>
-										<li><NavLink to="/login">Login</NavLink></li>
-									</>
-								}
-								
-								<li><a href="#">Categories</a>
-									<ul className="sub-menu">
-										{
-											allCate.map((value, index)=>{
-												return(
-
-													<li key={index}><NavLink to="">{value.name}</NavLink></li>
-												)
-											})
-										}
-
-									</ul>
-								</li>
-								<li>
-									<div className="header-icons">
-										<NavLink className="shopping-cart" to="/cart"><i className="fas fa-shopping-cart"></i></NavLink>
-										<a className="mobile-hide search-bar-icon" href="#"><i className="fas fa-search"></i></a>
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a className="mobile-show search-bar-icon" href="#"><i className="fas fa-search"></i></a>
-						<div className="mobile-menu"></div>
-						
-					</div>
-				</div>
-			</div>
 		</div>
-	</div>
+      </li>
+      
+    </ul>
+  </div>
+		</div>
+	</nav>
   )
 }
 

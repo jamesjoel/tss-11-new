@@ -1,0 +1,28 @@
+<%- include("../includes/header") %>
+
+<div class="container my-5" style="min-height: 700px;" >
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <h3> all country population page</h3>
+     <table class=" table table-primary">
+        <tr>
+            <th>S. nu</th>
+            <th>Country</th>
+            <th>Population</th>
+        </tr>
+
+        <% result.forEach((value, index)=>{ %>
+            <tr>
+                <td><%- index+1 %></td>
+                <td><%- value.country %></td>
+                <td><%- value.population %></td>
+            </tr>
+        <% }) %>
+        
+     </table>
+        </div>
+    </div>
+</div>
+
+
+<%- include("../includes/footer") %>

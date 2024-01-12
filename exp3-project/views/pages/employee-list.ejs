@@ -1,0 +1,32 @@
+<%- include("../includes/header") %>
+     
+    <div class="container my-5" style="min-height: 700px;">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <h2>Employee List</h2>
+                
+                <table class="table table-dark">
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Name</th>
+                        <th>Salary</th>
+                        <th>City</th>
+                        <th>Delete</th>
+                    </tr>
+                    <% result.forEach((value, index)=>{ %>
+                        <tr>
+                            <td><%- index+1 %></td>
+                            <td><%- value.name %></td>
+                            <td><%- value.salary %></td>
+                            <td><%- value.city %></td>
+                            <td><a href="/employee/delete/<%- value._id %>" class="btn btn-danger btn-sm">Delete</a></td>
+                        </tr>
+                    <% }) %>
+                </table>
+                
+            </div>
+        </div>
+    </div>    
+
+<%- include("../includes/footer") %>

@@ -1,0 +1,37 @@
+<%- include("../includes/header") %>
+<div class="container my-4" style="min-height: 700px;">
+    <form action="/user/edit/<%- user._id %>" method="post">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Update User</h3>
+            <label>Full Name</label>
+            <input type="text" value="<%- user.name %>" name="name" class="form-control" />
+            <label>Email</label>
+            <input type="text" value="<%- user.email %>" name="email" class="form-control" />
+            <label>Country</label>
+            <select class="form-control" name="country">
+                <option>Select</option>
+                <% result.forEach((value)=>{ %>
+                    <option <% if(user.country==value.name) { %> selected <% }%>><%- value.name %></option>
+                <% }) %>
+            </select>
+            <label>Contact</label>
+            <input type="text" value="<%- user.contact %>" name="contact" class="form-control" />
+            <label>Address</label>
+            <textarea class="form-control" name="address"><%- user.address %></textarea>
+            <label>Gender</label>
+
+
+            Male <input <% if(user.gender=="male"){ %> checked <% } %> type="radio" name="gender" value="male" />
+            Female <input <% if(user.gender=="female"){ %> checked <% } %> type="radio" name="gender" value="female" />
+
+
+
+            <br />
+            <input type="submit" class="btn btn-primary" value="Update" />
+        </div>
+    </div>
+    </form>
+
+</div>
+<%- include("../includes/footer") %>

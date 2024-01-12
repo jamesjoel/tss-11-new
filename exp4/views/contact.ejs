@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #784699;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Contact</h1>
+        <%
+            let name = "James"; 
+        %>
+        <h2>Hi, <%- name %></h2>
+
+        <% 
+            let a = 1476;
+            let b = 893;
+            let c = a*b;
+
+            if(c > 10000)
+            { %>
+                <h1><%- c %></h1>
+            <%
+            }
+            else{ %>
+
+                <h1>Mumbai</h1>
+           <% }
+        %>
+
+        <table align="center" border="1" width="600">
+            
+            <% for(let i = 1; i <= 10; i++)
+            { 
+            %>
+
+
+            <tr align="center">
+                <td><%- i %></td>
+                <td>X</td>
+                <td>7</td>
+                <td>=</td>
+                <td><%- i*7 %></td>
+            </tr>
+
+
+            <%
+            }
+             %>
+            
+        </table>
+    </body>
+</html>

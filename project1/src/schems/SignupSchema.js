@@ -11,6 +11,6 @@ const SignupSchema =YUP.object({
    contact : YUP.number().min(100000000,"min 8 disit").max(999999999999,"max 12 disit").typeError('insert nimber only').required("insert your contact no"),
    gender : YUP.string().required("select your gender"),
 
-})
+});
 
-export default SignupSchema
+export default SignupSchema;

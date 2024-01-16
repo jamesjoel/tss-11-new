@@ -30,10 +30,19 @@ const Header = () => {
       <li className="nav-item">
         <NavLink className="nav-link" to="/">Home</NavLink>
       </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" to="/signup">Signup</NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" to="/login">Login</NavLink>
+      </li>
       <li className="nav-item dropdown">
         <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="#">Category</NavLink>
 		<div className='dropdown-menu'>
-        	<NavLink className="dropdown-item" to="/category/home">Home Appliance</NavLink>
+			{
+				allCate.map(value=><NavLink className="dropdown-item" to="/category/home">{value.name}</NavLink>)
+			}
+        	
 
 		</div>
       </li>

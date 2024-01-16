@@ -1,0 +1,58 @@
+
+<%- include ("../includes/header")%>    
+
+
+<div class="container my-5 " style="min-height: 700px">
+  <div class="row">
+    <div class="col-md-12">
+        <div class="row">
+
+            <form action="/student/save" method="post">
+            <div class="col-md-6 offset-md-3" >
+                <h2 class="text-center">Add new students</h2>
+                <div class="my-3">
+                 <label >Full name</label>
+                 <input type="text" name="fullname" class="form-control"/>
+                </div>
+                <div class="my-3">
+                    <label >email</label>
+                    <input name="email" type="text"  class="form-control"/>
+                </div>
+                <div class="my-3">
+                    <label  >class</label>
+                
+                    <select name="class" class="form-control">
+                        <option>Select class</option>
+                       <% for (var i=1; i<=12; i++){%>
+                         <option><%- i %></option>
+                         <%}%>
+                    </select>
+                </div>
+                <div class="my-3">
+                    <label >city</label>
+                    <select name="city" class="form-control">
+                        <option>Select</option>
+                        <%result.forEach((value)=>{%> 
+                            <option value=""><%-value.name%></option>
+                            <%})%> 
+                    </select>
+                </div>
+                <div class="my-3">
+                    <label >contact</label>
+                    <input name="contact" type="text" class="form-control"/>
+                </div>
+                <div class="my-3">
+                    <label >Gender</label>
+                    <label for="male">male</label> <input type="radio"  name="gender" id="male" value="male">
+                    <label for="frmale">female</label> <input type="radio" name="gender" id="female" value="female">
+                </div>
+                <div class="my-3">
+                    <input type="submit"class="btn btn-info" value="add student">
+                </div>
+            </form>
+        </div>
+    </div>
+
+  </div>
+</div>
+<%- include ("../includes/footer")%>

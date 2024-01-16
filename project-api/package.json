@@ -2,7 +2,11 @@
   "name": "project-api",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
+  "main": "app.js",
+=======
   "main": "index.js",
+>>>>>>> 4d7a0369ec211716eb5aece5daf371d0784e2b03
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

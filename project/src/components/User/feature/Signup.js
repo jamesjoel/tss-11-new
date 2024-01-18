@@ -23,13 +23,18 @@ const Signup = () => {
             gender : "",
             address : ""
         },
-        onSubmit : (formdata)=>{
-            axios.post(`${API_URL}signup`, formdata).then(response=>{
-                if(response.data.success==true)
-                {
-                    navigate("/login");
-                }
-            })
+        onSubmit : async(formdata)=>{
+            // axios.post(`${API_URL}signup`, formdata).then(response=>{
+            //     if(response.data.success==true)
+            //     {
+            //         navigate("/login");
+            //     }
+            // })
+            let response = await axios.post(`${API_URL}signup`, formdata);
+            if(response.data.success==true)
+            {
+                navigate("/login");
+            }
         }
         // localhost:8080/api/signup
      });
@@ -43,20 +48,20 @@ const Signup = () => {
 
 
     useEffect(()=>{
-        axios.get(`${API_URL}city/state`).then(response=>{
-            
-            setState(response.data);
-        })
+        
+        getState();
     },[])
+
+    let getState = async()=>{
+        let response = await axios.get(`${API_URL}city/state`);
+        setState(response.data);
+    }
  
 
-    let getCity = (event)=>{
-        // console.log("******", event.target.value);
+    let getCity = async(event)=>{
         let x = event.target.value;
-        axios.get(`${API_URL}city/getcity/${x}`).then(response=>{
-            // console.log(response.data);
-            setCity(response.data);
-        })
+        let response = await axios.get(`${API_URL}city/getcity/${x}`)
+        setCity(response.data);
     }
 
     
@@ -168,3 +173,37 @@ const Signup = () => {
 }
 
 export default Signup
+
+/*
+
+let demo = ()=>{
+    axios.get().then(response=>{
+        set(respose.data)
+    })
+}
+
+let demo = async ()=>{
+    let response = await axios.get();
+    set(respose.data)
+}
+
+
+
+useEffect(()=>{
+    axios.get().then(response=>{
+        ...
+    })
+})
+
+
+useEffect(()=>{
+    demo();
+})
+
+let demo =async ()=>{
+    let respose = await axios.get();
+    ..
+}
+
+
+*/

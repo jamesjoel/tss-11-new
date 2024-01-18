@@ -17,28 +17,28 @@ const Header = () => {
         </li>
         <li className="nav-item dropdown">
           <NavLink data-toggle="dropdown" className="nav-link dropdown-toggle" to="/admin/dashboard">Product</NavLink>
-          <div className='dropdown-menu'>
+          <div className='dropdown-menu dropdown-menu-new'>
             <NavLink className="dropdown-item" to="/admin/product">Add</NavLink>
             <NavLink className="dropdown-item" to="/admin/product/list">List</NavLink>
           </div>
         </li>
         <li className="nav-item dropdown">
           <NavLink data-toggle="dropdown" className="nav-link dropdown-toggle" to="/admin/dashboard">Category</NavLink>
-          <div className='dropdown-menu'>
+          <div className='dropdown-menu dropdown-menu-new'>
             <NavLink className="dropdown-item" to="/admin/category">Add</NavLink>
             <NavLink className="dropdown-item" to="/admin/category/list">List</NavLink>
           </div>
         </li>
         <li className="nav-item dropdown">
           <NavLink data-toggle="dropdown" className="nav-link dropdown-toggle" to="/admin/dashboard">Sub-Category</NavLink>
-          <div className='dropdown-menu'>
+          <div className='dropdown-menu dropdown-menu-new'>
             <NavLink className="dropdown-item" to="/admin/sub-category">Add</NavLink>
             <NavLink className="dropdown-item" to="/admin/sub-category/list">List</NavLink>
           </div>
         </li>
         <li className="nav-item dropdown">
           <NavLink data-toggle="dropdown" className="nav-link dropdown-toggle" to="/admin/dashboard">Users</NavLink>
-          <div className='dropdown-menu'>
+          <div className='dropdown-menu dropdown-menu-new'>
             
             <NavLink className="dropdown-item" to="/admin/users">List</NavLink>
           </div>

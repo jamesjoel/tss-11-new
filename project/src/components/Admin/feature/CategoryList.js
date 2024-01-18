@@ -11,26 +11,26 @@ const CategoryList = () => {
   
 
   useEffect(()=>{
-    axios.get(`${API_URL}category`).then(response=>{
-      setAllCate(response.data.result);
-    })
+    getCate();
   },[])
+
+  let getCate = async()=>{
+   let response = await axios.get(`${API_URL}category`)
+   setAllCate(response.data.result);
+  
+  }
 
   let askDelete = (obj)=>{
     // console.log("*****", obj);
     setCate(obj);
   }
 
-  let confDelete = ()=>{
-      axios.delete(`${API_URL}category/${cate._id}`).then(response=>{
-        // console.log(response.data);
-
-        setAllCate(()=>{
+  let confDelete = async()=>{
+      let response = await axios.delete(`${API_URL}category/${cate._id}`);
+      setAllCate(()=>{
           return allCate.filter(value=> value._id != cate._id )
         })
-        x.current.click();
-
-      })
+      x.current.click();
   }
 
   return (

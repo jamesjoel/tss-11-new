@@ -36,21 +36,29 @@ const Header = () => {
       <li className="nav-item">
         <NavLink className="nav-link" to="/login">Login</NavLink>
       </li>
+      
       <li className="nav-item dropdown">
         <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="#">Category</NavLink>
-		<div className='dropdown-menu'>
-			{
-				allCate.map(value=><NavLink className="dropdown-item" to="/category/home">{value.name}</NavLink>)
-			}
-        	
-
-		</div>
+		<ul class="dropdown-menu dropdown-menu-new" role="menu" aria-labelledby="dropdownMenu">
+                <li class="dropdown-item"><a href="#">Electronics</a></li>
+                <li class="dropdown-submenu">
+                  <a  class="dropdown-item" href="#">Home Appliance</a>
+                  <ul class="dropdown-menu multi-level">
+                    <li class="dropdown-item"><a href="#">Second level</a></li>
+                    
+                    <li class="dropdown-item"><a href="#">Second level</a></li>
+                    <li class="dropdown-item"><a href="#">Second level</a></li>
+                  </ul>
+                </li>
+              </ul>
       </li>
       
     </ul>
   </div>
 		</div>
 	</nav>
+
+	
   )
 }
 

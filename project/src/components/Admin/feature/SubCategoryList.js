@@ -13,6 +13,7 @@ const SubCategoryList = () => {
   let [allSubCate, setAllSubCate] = useState([]);
   useEffect(()=>{
     axios.get(`${API_URL}subcategory`).then(response=>{
+      console.log(response.data.result);
       setAllSubCate(response.data.result);
     })
   },[])

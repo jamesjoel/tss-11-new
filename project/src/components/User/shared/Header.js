@@ -9,13 +9,13 @@ const Header = () => {
 	let [allCate, setAllCate] = useState([]);
 
 	useEffect(()=>{
-		axios.get(`${API_URL}category`).then(response=>{
+		axios.get(`${API_URL}category-subcategory`).then(response=>{
 			setAllCate(response.data.result);
 		})
 	},[])
 
   return (
-    <nav className="navbar navbar-expand-md sticky-wrapper navbar-light">
+    <nav className="navbar navbar-expand-md sticky-wrapper navbar-dark" style={{backgroundColor : "#000"}}>
   
 		<div className='container'>
 		<a className="navbar-brand" href="#">
@@ -39,21 +39,35 @@ const Header = () => {
       
       <li className="nav-item dropdown">
         <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="#">Category</NavLink>
-		<ul class="dropdown-menu dropdown-menu-new" role="menu" aria-labelledby="dropdownMenu">
-                <li class="dropdown-item"><a href="#">Electronics</a></li>
-                <li class="dropdown-submenu">
-                  <a  class="dropdown-item" href="#">Home Appliance</a>
-                  <ul class="dropdown-menu multi-level">
-                    <li class="dropdown-item"><a href="#">Second level</a></li>
-                    
-                    <li class="dropdown-item"><a href="#">Second level</a></li>
-                    <li class="dropdown-item"><a href="#">Second level</a></li>
-                  </ul>
-                </li>
+          <ul class="dropdown-menu dropdown-menu-new" role="menu" aria-labelledby="dropdownMenu">
+                {
+                  allCate.map(value=>{
+
+                    return(
+                      <li class="dropdown-submenu">
+                      <a  class="dropdown-item" href="#">{value.name}</a>
+                      <ul class="dropdown-menu multi-level">
+                        
+                        {
+                          value.subcate.map(value2=>{
+                            return(
+                              <li class="dropdown-item"><a href="#">{value2.name}</a></li>
+                            )
+                          })
+                        }
+                        
+                        
+                      </ul>
+                    </li>
+                    )
+                  })
+                }
+                
+                
               </ul>
-      </li>
+          </li>
       
-    </ul>
+        </ul>
   </div>
 		</div>
 	</nav>

@@ -4,6 +4,7 @@ import LoginSchema from '../../../schemas/LoginSchema'
 import axios from 'axios';
 import {API_URL} from '../../../util/API_URL';
 import {useNavigate} from 'react-router-dom'
+import ProductBox from '../shared/ProductBox';
 
 const Login = () => {
 
@@ -71,9 +72,15 @@ const Login = () => {
                         }
                     </div>
                 </div>
+                
             </div>
         </div>
         </form>
+        <div className='container'>
+            <div className='row'>
+            <ProductBox info={{ title : "T-Shirt", price : 1000, category : "Fashion Men"}} />
+            </div>
+        </div>
     </div>
   )
 }

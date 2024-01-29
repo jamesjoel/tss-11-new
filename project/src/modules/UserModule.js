@@ -8,7 +8,7 @@ const UserModule = () => {
   return (
     <>
       <Header />
-      <Slider />
+      
       <Outlet />
       <Footer />
     </>

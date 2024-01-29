@@ -1,10 +1,26 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Deal from '../shared/Deal';
 import Discount from '../shared/Discount'
+import ProductBox from '../shared/ProductBox';
+import axios from 'axios'
+import {API_URL} from '../../../util/API_URL'
+import Slider from '../shared/Slider';
+
 const Home = () => {
+
+	let [allProduct, setAllProduct] = useState([]);
+	useEffect(()=>{
+		getProduct();
+	},[])
+
+	let getProduct = async()=>{
+		let response = await axios.get(`${API_URL}product`);
+		setAllProduct(response.data.result);
+	}
+
   return (
 	<>
-	
+	<Slider />
     <div className="product-section mt-150 mb-150">
 		<div className="container">
 			<div className="row">
@@ -17,36 +33,12 @@ const Home = () => {
 			</div>
 
 			<div className="row">
-				<div className="col-lg-4 col-md-6 text-center">
-					<div className="single-product-item">
-						<div className="product-image">
-							<a href="single-product.html"><img src="/assets/img/products/product-img-1.jpg" alt=""/></a>
-						</div>
-						<h3>Strawberry</h3>
-						<p className="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" className="cart-btn"><i className="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div className="col-lg-4 col-md-6 text-center">
-					<div className="single-product-item">
-						<div className="product-image">
-							<a href="single-product.html"><img src="/assets/img/products/product-img-2.jpg" alt=""/></a>
-						</div>
-						<h3>Berry</h3>
-						<p className="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" className="cart-btn"><i className="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div className="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-					<div className="single-product-item">
-						<div className="product-image">
-							<a href="single-product.html"><img src="/assets/img/products/product-img-3.jpg" alt=""/></a>
-						</div>
-						<h3>Lemon</h3>
-						<p className="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" className="cart-btn"><i className="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
+				{
+					allProduct.map(value=>{
+						return(<ProductBox info={value}/>)
+					})
+				}
+				
 			</div>
 		</div>
 	</div>

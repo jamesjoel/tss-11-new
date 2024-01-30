@@ -41,7 +41,7 @@ const Login = () => {
     })
 
   return (
-    <div className="container my-5" style={{minHeight : "700px"}}>
+    <div className="container" style={{minHeight : "700px", marginTop : "150px"}}>
         <form onSubmit={loginFrm.handleSubmit}>
         <div className="row">
             <div className="col-md-6 offset-md-3">
@@ -76,11 +76,7 @@ const Login = () => {
             </div>
         </div>
         </form>
-        <div className='container'>
-            <div className='row'>
-            <ProductBox info={{ title : "T-Shirt", price : 1000, category : "Fashion Men"}} />
-            </div>
-        </div>
+        
     </div>
   )
 }

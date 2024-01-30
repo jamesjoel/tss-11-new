@@ -6,6 +6,8 @@ import './Header.css';
 
 const Header = () => {
 
+  
+
 	let [allCate, setAllCate] = useState([]);
 
 	useEffect(()=>{
@@ -30,28 +32,35 @@ const Header = () => {
       <li className="nav-item">
         <NavLink className="nav-link" to="/">Home</NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/signup">Signup</NavLink>
-      </li>
-      <li className="nav-item">
-        <NavLink className="nav-link" to="/login">Login</NavLink>
-      </li>
+      
+      {
+									localStorage.getItem("access-token") ? 
+									<>
+										<li className="nav-item"><NavLink className="nav-link" to="/my-profile">My Profile</NavLink></li>
+										<li className="nav-item"><NavLink className="nav-link" to="/logout">Logout</NavLink></li>
+									</> 
+									: 
+									<>
+										<li className="nav-item"><NavLink className="nav-link" to="/signup">Signup</NavLink></li>
+										<li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li>
+									</>
+								}
       
       <li className="nav-item dropdown">
         <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="#">Category</NavLink>
-          <ul class="dropdown-menu dropdown-menu-new" role="menu" aria-labelledby="dropdownMenu">
+          <ul className="dropdown-menu dropdown-menu-new" role="menu" aria-labelledby="dropdownMenu">
                 {
                   allCate.map(value=>{
 
                     return(
-                      <li class="dropdown-submenu">
-                      <a  class="dropdown-item" href="#">{value.name}</a>
-                      <ul class="dropdown-menu multi-level">
+                      <li key={value._id} className="dropdown-submenu">
+                      <NavLink  className="dropdown-item" to={`/category/${value.name}`}>{value.name}</NavLink>
+                      <ul className="dropdown-menu multi-level">
                         
                         {
                           value.subcate.map(value2=>{
                             return(
-                              <li class="dropdown-item"><a href="#">{value2.name}</a></li>
+                              <li key={value2._id} className="dropdown-item"><NavLink href="#">{value2.name}</NavLink></li>
                             )
                           })
                         }

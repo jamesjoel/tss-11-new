@@ -1,3 +1,14 @@
+.buy-btn{
+    
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+  
+}
+
 div.show .navbar-nav{
     background-color: #253039;
 }

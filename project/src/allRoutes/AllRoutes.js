@@ -17,6 +17,7 @@ import Dashboard from '../components/Admin/feature/Dashboard';
 import AdminLogout from '../components/Admin/feature/Logout'
 import AdminProduct from '../components/Admin/feature/Product'
 import ProductList from '../components/Admin/feature/ProductList'
+
 import Category from '../components/Admin/feature/Category'
 import CategoryList from '../components/Admin/feature/CategoryList'
 import SubCategory from '../components/Admin/feature/SubCategory'
@@ -25,6 +26,7 @@ import Users from '../components/Admin/feature/Users'
 import AdminProtectedModule from '../modules/AdminProtectedModule';
 import BuyNow from '../components/User/feature/BuyNow';
 import Invoice from '../components/User/feature/Invoice';
+import ProductCategory from '../components/User/feature/ProductCategory';
 
 
 
@@ -35,6 +37,7 @@ const AllRoutes = () => {
           <Route path='' element={<Home />} />
           <Route path='about' element={<About />} />
           <Route path='login' element={<Login />} />
+          <Route path='category/:catename' element={<ProductCategory />} />
           <Route path='logout' element={<Logout />} />
           <Route path='my-profile' element={<MyProfile />} />
           <Route path='product/:id' element={<Product />} />

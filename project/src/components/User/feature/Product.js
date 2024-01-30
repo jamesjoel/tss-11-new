@@ -1,11 +1,15 @@
-import React, {useState, useEffect} from 'react'
-import { useParams, NavLink } from 'react-router-dom'
+
+import React, {useState, useEffect, useRef} from 'react'
+import { useParams, NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { API_URL } from '../../../util/API_URL'
 
 const Product = () => {
 	let [pro, setPro] = useState({});
 	let param = useParams();
+	let navigate = useNavigate();
+	let btn = useRef()
+	
 
 	useEffect(()=>{
 		getPro();
@@ -20,7 +24,18 @@ const Product = () => {
 	useEffect(()=>{
 		window.scrollTo(0, 0)
 	},[])
+
+	let checkLogin = ()=>{
+		if(localStorage.getItem("access-token")){
+
+			navigate("/buynow")
+		}else{
+			btn.current.click();
+		}
+	}
+
   return (
+	<>
     <div className="single-product mt-150 mb-150">
 		<div className="container">
 			<div className="row">
@@ -40,7 +55,7 @@ const Product = () => {
 						<div className="single-product-form">
 							
 							<NavLink to="/cart" className="cart-btn m-2"><i className="fas fa-shopping-cart"></i> Add to Cart</NavLink>
-							<NavLink to="/buynow" className="cart-btn m-2"><i className="fas fa fa-shopping-bag"></i> Buy Now</NavLink>
+							<button onClick={checkLogin} className="btn buy-btn m-2"><i className="fas fa fa-shopping-bag"></i> Buy Now</button>
 							<p><strong>Categories: </strong>{pro.category}</p>
 						</div>
 						
@@ -48,8 +63,27 @@ const Product = () => {
 				</div> : ''
 				}
 			</div>
+			<button ref={btn} style={{display : "none"}} data-toggle="modal" data-target="#askModal">ok</button>
 		</div>
 	</div>
+
+	<div className='modal fade' id='askModal'>
+		<div className="modal-dialog">
+			<div className="modal-content">
+				<div className="modal-header">
+					<h4>Message !</h4>
+				</div>
+				<div className="modal-body">
+					<p>You are not logged in, If you buy this product you have to <NavLink data-dismiss="modal" onClick={()=>navigate("/login")} to='/login'>Login</NavLink> firset</p>
+				</div>
+				<div className="modal-footer">
+					<button className='btn btn-danger' data-dismiss="modal">Close</button>
+					<button className='btn btn-primary' onClick={()=>navigate("/login")} data-dismiss="modal">Login</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</>
   )
 }
 

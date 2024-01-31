@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import {useFormik} from 'formik';
 import ProductSchema from '../../../schemas/ProductSchema'
 import {API_URL} from '../../../util/API_URL'
@@ -10,6 +10,7 @@ const Product = () => {
   let navigate = useNavigate();
   let [cate, setCate] = useState([]);
   let [subcate, setSubCate] = useState([]);
+  let file = useRef();
 
   useEffect(()=>{
     getCategory();
@@ -28,13 +29,18 @@ const Product = () => {
     category : "",
     subcategory : "",
     detail : "",
+    image : ""
   })
 
   let proForm = useFormik({
     validationSchema : ProductSchema,
     initialValues : pro,
     onSubmit : async(formdata)=>{
-      let response = await axios.post(`${API_URL}product`, formdata);
+      let filedata = file.current.files[0];
+      let frm = new FormData();
+      frm.append("image", filedata);
+      frm.append("formdata", JSON.stringify(formdata));
+      let response = await axios.post(`${API_URL}product`, frm);
       navigate("/admin/product/list")
     }
   })
@@ -57,6 +63,10 @@ const Product = () => {
             <div className="my-2">
               <label>Product Price</label>
               <input type='text' name='price' onChange={proForm.handleChange} className={'form-control ' + (proForm.errors.price && proForm.touched.price ? 'is-invalid' : '')} />
+            </div>
+            <div className="my-2">
+              <label>Product Image</label>
+              <input type='file' ref={file} name='image' onChange={proForm.handleChange} className={'form-control ' + (proForm.errors.image && proForm.touched.image ? 'is-invalid' : '')} />
             </div>
             <div className="my-2">
               <label>Product Category</label>

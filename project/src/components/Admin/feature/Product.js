@@ -59,6 +59,9 @@ const Product = () => {
             <div className="my-2">
               <label>Product Title</label>
               <input type='text' name='title' onChange={proForm.handleChange} className={'form-control ' + (proForm.errors.title && proForm.touched.title ? 'is-invalid' : '')} />
+              {
+                proForm.errors.title && proForm.touched.title ? <small className='text-danger'>{proForm.errors.title}</small> : ''
+              }
             </div>
             <div className="my-2">
               <label>Product Price</label>
@@ -66,7 +69,10 @@ const Product = () => {
             </div>
             <div className="my-2">
               <label>Product Image</label>
-              <input type='file' ref={file} name='image' onChange={proForm.handleChange} className={'form-control ' + (proForm.errors.image && proForm.touched.image ? 'is-invalid' : '')} />
+              <input type='file' ref={file} name='image' onChange={(event)=>proForm.handleChange(event)} className={'form-control ' + (proForm.errors.image && proForm.touched.image ? 'is-invalid' : '')} />
+              {
+                proForm.errors.image && proForm.touched.image ? <small className='text-danger'>{proForm.errors.image}</small> : ''
+              }
             </div>
             <div className="my-2">
               <label>Product Category</label>

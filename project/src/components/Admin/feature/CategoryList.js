@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react'
-import axios from 'axios'
-import { API_URL } from '../../../util/API_URL'
+
+
+import { getAllCategory, deleteCategory } from '../../../services/CategoryService'
 
 const CategoryList = () => {
 
@@ -15,8 +16,8 @@ const CategoryList = () => {
   },[])
 
   let getCate = async()=>{
-   let response = await axios.get(`${API_URL}category`)
-   setAllCate(response.data.result);
+   let response = await getAllCategory();
+   setAllCate(response.result);
   
   }
 
@@ -26,7 +27,10 @@ const CategoryList = () => {
   }
 
   let confDelete = async()=>{
-      let response = await axios.delete(`${API_URL}category/${cate._id}`);
+      // let response = await axios.delete(`${API_URL}category/${cate._id}`);
+      let response = await deleteCategory(cate._id);
+
+
       setAllCate(()=>{
           return allCate.filter(value=> value._id != cate._id )
         })

@@ -4,6 +4,7 @@ import SubCateSchema  from '../../../schemas/SubCateSchema'
 import { API_URL } from '../../../util/API_URL'
 import {useFormik} from 'formik'
 import {useNavigate} from 'react-router-dom'
+import { getAllCategory } from '../../../services/CategoryService'
 
 const SubCategory = () => {
   let navigate = useNavigate();
@@ -14,10 +15,17 @@ const SubCategory = () => {
   let [allCate, setAllCate] = useState([]);
 
   useEffect(()=>{
-    axios.get(`${API_URL}category`).then(response=>{
-      setAllCate(response.data.result);
-    })
+    // axios.get(`${API_URL}category`).then(response=>{
+    //   setAllCate(response.data.result);
+    // })
+    getAllcate();
+
   },[])
+
+  let getAllcate = async()=>{
+    let response = await getAllCategory();
+    setAllCate(response.result);
+  }
 
   let subCateForm = useFormik({
     validationSchema : SubCateSchema,

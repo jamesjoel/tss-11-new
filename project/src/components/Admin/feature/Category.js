@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import {useFormik} from 'formik'
 import CateSchema from '../../../schemas/CateSchema'
-import axios from 'axios'
-import { API_URL } from '../../../util/API_URL'
 import {useNavigate} from 'react-router-dom'
+import { saveCategory } from '../../../services/CategoryService'
 
 const Category = () => {
 
@@ -13,11 +12,9 @@ const Category = () => {
   let cateForm = useFormik({
     validationSchema : CateSchema,
     initialValues : cate,
-    onSubmit : (formdata)=>{
-      axios.post(`${API_URL}category`, formdata).then(response=>{
-        // console.log(response.data);
+    onSubmit : async (formdata)=>{
+        let response = await saveCategory(formdata);
         navigate("/admin/category/list")
-      })
     }
   })
 

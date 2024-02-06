@@ -57,8 +57,10 @@ const AllRoutes = () => {
                 <Route path='product' element={<AdminProduct />} />
                 <Route path='product/list' element={<ProductList />} />
                 <Route path='category' element={<Category />} />
+                <Route path='category/edit/:id' element={<Category />} />
                 <Route path='category/list' element={<CategoryList />} />
                 <Route path='sub-category' element={<SubCategory />} />
+                <Route path='sub-category/edit/:id' element={<SubCategory />} />
                 <Route path='sub-category/list' element={<SubCategoryList />} />
                 <Route path='users' element={<Users />} />
                 <Route path='logout' element={<AdminLogout />} />

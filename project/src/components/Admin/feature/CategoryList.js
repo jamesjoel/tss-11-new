@@ -2,9 +2,11 @@ import React, {useEffect, useState, useRef} from 'react'
 
 
 import { getAllCategory, deleteCategory } from '../../../services/CategoryService'
+import { useNavigate } from 'react-router-dom';
 
 const CategoryList = () => {
 
+  let navigate = useNavigate();
   let x = useRef();
   let [allCate, setAllCate] = useState([]);
   let [cate, setCate] = useState({});
@@ -37,6 +39,10 @@ const CategoryList = () => {
       x.current.click();
   }
 
+  let askEdit = (obj)=>{
+    navigate(`/admin/category/edit/${obj._id}`);
+  }
+
   return (
     <>
     
@@ -50,6 +56,7 @@ const CategoryList = () => {
               <tr>
                 <th>S.No.</th>
                 <th>Name</th>
+                <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -60,6 +67,7 @@ const CategoryList = () => {
                     <tr key={index}>
                       <td>{index+1}</td>
                       <td>{value.name}</td>
+                      <td><button onClick={()=>askEdit(value)} className='btn btn-info btn-sm'>Edit</button></td>
                       <td><button onClick={()=>askDelete(value)} data-toggle="modal" data-target="#delModal" className='btn btn-danger btn-sm'>Delete</button></td>
                     </tr>
                   )

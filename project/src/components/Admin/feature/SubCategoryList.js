@@ -1,33 +1,39 @@
 import React, {useState, useEffect, useRef} from 'react'
-import axios from 'axios'
-import { API_URL } from '../../../util/API_URL'
-import { useNavigate } from 'react-router-dom'
-
+import { getAllSubCategory, deleteSubCategory } from '../../../services/SubCategoryService'
+import { useNavigate } from 'react-router-dom';
 
 
 const SubCategoryList = () => {
+  let navigate = useNavigate();
   let [subCate, setSubCate] = useState({});
   let btn = useRef();
-  let navigate = useNavigate()
+  
   
   let [allSubCate, setAllSubCate] = useState([]);
   useEffect(()=>{
-    axios.get(`${API_URL}subcategory`).then(response=>{
-      console.log(response.data.result);
-      setAllSubCate(response.data.result);
-    })
+    getSubCate();
   },[])
+
+  let getSubCate = async()=>{
+    let response = await getAllSubCategory();
+    setAllSubCate(response.result);
+  }
 
   let askDelete=(obj)=>{
     setSubCate(obj);
   }
   let confDelete = async()=>{
-    let response = await axios.delete(`${API_URL}subcategory/${subCate._id}`)
+    await deleteSubCategory(subCate._id);
+    
     setAllSubCate(()=>{
       return allSubCate.filter(value=>value._id != subCate._id);
     })
     btn.current.click();
     
+  }
+
+  let askEdit = (obj)=>{
+    navigate(`/admin/sub-category/edit/${obj._id}`);
   }
   return (
     <>
@@ -40,6 +46,7 @@ const SubCategoryList = () => {
                 <th>S.No.</th>
                 <th>Category</th>
                 <th>Sub-Category</th>
+                <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -51,6 +58,7 @@ const SubCategoryList = () => {
                       <td>{index+1}</td>
                       <td>{value.category}</td>
                       <td>{value.name}</td>
+                      <td><button onClick={()=>askEdit(value)} className='btn btn-info btn-sm'>Edit</button></td>
                       <td><button onClick={()=>askDelete(value)} data-target="#delModal" data-toggle="modal" className='btn btn-danger btn-sm'>Delete</button></td>
                     </tr>
                   )

@@ -36,6 +36,10 @@ const Login = () => {
                 {
                     setErrMsg("This Password is Incorrect !");
                 }
+                if(response.data.success == false && response.data.type == 3)
+                {
+                    setErrMsg("You are De-Activate Now...");
+                }
             })
         }
     })

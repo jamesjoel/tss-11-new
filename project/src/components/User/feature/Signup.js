@@ -96,7 +96,7 @@ const Signup = () => {
                         </div>
                         <div className='my-3'>
                             <label>Password</label>
-                            <input type='password' onChange={signupForm.handleChange} name='password' className={'form-control ' + (signupForm.errors.password && signupForm.touched.password ? 'is-invalid' : '')} />
+                            <input type='text' onChange={signupForm.handleChange} name='password' className={'form-control ' + (signupForm.errors.password && signupForm.touched.password ? 'is-invalid' : '')} />
                             {
                                 signupForm.errors.password && signupForm.touched.password ? <small className='text-danger'>{signupForm.errors.password}</small> : ''
                             }

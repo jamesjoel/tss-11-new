@@ -33,18 +33,7 @@ const Header = () => {
         <NavLink className="nav-link" to="/">Home</NavLink>
       </li>
       
-      {
-									localStorage.getItem("access-token") ? 
-									<>
-										<li className="nav-item"><NavLink className="nav-link" to="/my-profile">My Profile</NavLink></li>
-										<li className="nav-item"><NavLink className="nav-link" to="/logout">Logout</NavLink></li>
-									</> 
-									: 
-									<>
-										<li className="nav-item"><NavLink className="nav-link" to="/signup">Signup</NavLink></li>
-										<li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li>
-									</>
-								}
+      
       
       <li className="nav-item dropdown">
         <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="#">Category</NavLink>
@@ -74,9 +63,25 @@ const Header = () => {
                 
                 
               </ul>
-          </li>
-      
-        </ul>
+      </li>
+      {
+									localStorage.getItem("access-token") ? 
+									<>
+										<li className='nav-item dropdown'>
+                      <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="#">{localStorage.getItem("name")}</NavLink>
+                      <ul className="dropdown-menu dropdown-menu-new" role="menu" aria-labelledby="dropdownMenu">
+                        <NavLink className="dropdown-item" to="/my-profile">My Profile</NavLink>
+                        <NavLink className="dropdown-item" to="/logout">Logout</NavLink>
+                      </ul>
+                    </li>
+									</> 
+									: 
+									<>
+										<li className="nav-item"><NavLink className="nav-link" to="/signup">Signup</NavLink></li>
+										<li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li>
+									</>
+								}
+      </ul>
   </div>
 		</div>
 	</nav>

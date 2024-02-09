@@ -25,13 +25,14 @@ const Users = () => {
     await changeStatus(obj._id, newobj);
 
    setAllUser((x)=>{
-    return x.map(value=>{
+    let y = x.map(value=>{
         if(value._id == obj._id){
           return {...value, ...newobj}
         }else{
           return value;
         }
     })
+    return y;
     
    })
 
@@ -73,3 +74,28 @@ const Users = () => {
 }
 
 export default Users
+
+
+/*
+  let [data, setData] = useState(["rohit", "amar", "vijay", "nidhi"])
+  let i = 2;
+  let a = "nilesh";
+
+  let newdata = data.map((value, index)=>{
+                  if(index==i){
+                    value = a;
+                  }
+                  return value;
+                })
+
+  setData(return data.map((value, index)=>{
+                  if(index==i){
+                    value = a;
+                  }
+                  return value;
+                }));
+  
+
+
+
+*/

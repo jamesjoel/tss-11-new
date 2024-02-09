@@ -24,6 +24,8 @@ const Login = () => {
 
                 if(response.data.success == true)
                 {
+                    // console.log(response.data);
+                    localStorage.setItem("name", response.data.name);
                     localStorage.setItem("access-token", response.data.token)
                     navigate("/");
                 }

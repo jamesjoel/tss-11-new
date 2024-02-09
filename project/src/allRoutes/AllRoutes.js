@@ -27,6 +27,8 @@ import AdminProtectedModule from '../modules/AdminProtectedModule';
 import BuyNow from '../components/User/feature/BuyNow';
 import Invoice from '../components/User/feature/Invoice';
 import ProductCategory from '../components/User/feature/ProductCategory';
+import UserProtectedModule from '../modules/UserProtectedModule';
+import ChangePassword from '../components/User/feature/ChangePassword';
 
 
 
@@ -38,15 +40,19 @@ const AllRoutes = () => {
           <Route path='about' element={<About />} />
           <Route path='login' element={<Login />} />
           <Route path='category/:catename' element={<ProductCategory />} />
-          <Route path='logout' element={<Logout />} />
-          <Route path='my-profile' element={<MyProfile />} />
           <Route path='product/:id' element={<Product />} />
           <Route path='contact' element={<Contact />} />
           <Route path='demo' element={<Demo />} />
           <Route path='signup' element={<Signup />} />
           <Route path='cart' element={<Cart />} />
-          <Route path='buynow' element={<BuyNow />} />
-          <Route path='invoice' element={<Invoice />} />
+
+          <Route path='' element={<UserProtectedModule />}>
+            <Route path='logout' element={<Logout />} />
+            <Route path='buynow' element={<BuyNow />} />
+            <Route path='invoice' element={<Invoice />} />
+            <Route path='my-profile' element={<MyProfile />} />
+            <Route path='my-profile/changepassword' element={<ChangePassword />} />
+          </Route>
         </Route>
 
 

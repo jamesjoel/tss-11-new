@@ -1,18 +1,27 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { reset } from '../../redux/CounterSlice'
 
 const Header = () => {
+    let disp = useDispatch();
+    let y = useSelector(info=>info);
+
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
         <div className="container-fluid">
-            <a className="navbar-brand" href="#">Logo</a>
+            <a href='' className='navbar-brand'>{y}</a>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="collapsibleNavbar">
+                
             <ul className="navbar-nav">
                 <li className="nav-item">
                     <NavLink className="nav-link" to="/">Home</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/about">About</NavLink>
                 </li>
                 {
                     localStorage.getItem("access-token") 
@@ -61,6 +70,7 @@ const Header = () => {
                 </li> */}
                 
             </ul>
+            <button onClick={()=>disp(reset())} className='btn btn-light'>Reset</button>
             </div>
         </div>
     </nav>

@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { useFormik } from 'formik'
 import * as YUP from 'yup'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
+
+import Name from '../../Context/NameContext'
 
 let loginSchema = YUP.object({
   email : YUP.string().email("Invalid Email").required("Insert Email Id"),
@@ -10,6 +12,8 @@ let loginSchema = YUP.object({
 })
 
 const Login = () => {
+
+  let x = useContext(Name);
 
   let navigate = useNavigate();
   let [errMsg, setErrMsg] = useState("")
@@ -42,7 +46,7 @@ const Login = () => {
         <div className="col-md-6 offset-md-3">
           <div className="card">
             <div className="card-header">
-              <h4>Login</h4>
+              <h4>Login : {x}</h4>
             </div>
             <div className="card-body">
               <div className="my-3">

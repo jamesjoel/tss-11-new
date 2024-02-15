@@ -29,6 +29,7 @@ import Invoice from '../components/User/feature/Invoice';
 import ProductCategory from '../components/User/feature/ProductCategory';
 import UserProtectedModule from '../modules/UserProtectedModule';
 import ChangePassword from '../components/User/feature/ChangePassword';
+import Ludo from '../components/Admin/feature/Ludo';
 
 
 
@@ -60,6 +61,7 @@ const AllRoutes = () => {
           <Route path='' element={<AdminLogin />} />
           <Route path='' element={<AdminProtectedModule />}>
                 <Route path='dashboard' element={<Dashboard />} />
+                <Route path='ludo' element={<Ludo />} />
                 <Route path='product' element={<AdminProduct />} />
                 <Route path='product/list' element={<ProductList />} />
                 <Route path='category' element={<Category />} />

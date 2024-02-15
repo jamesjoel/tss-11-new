@@ -15,6 +15,9 @@ const Header = () => {
         <li className="nav-item">
           <NavLink className="nav-link" to="/admin/dashboard">Dashborad</NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/admin/ludo">Ludo</NavLink>
+        </li>
         <li className="nav-item dropdown">
           <NavLink data-toggle="dropdown" className="nav-link dropdown-toggle" to="/admin/dashboard">Product</NavLink>
           <div className='dropdown-menu dropdown-menu-new'>

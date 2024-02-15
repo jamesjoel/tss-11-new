@@ -1,23 +1,32 @@
-import React, {useState} from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { inc, dec, multi, div } from '../../redux/CounterSlice'
+
 
 const About = () => {
+  
+  let dispatch = useDispatch();
+  let counter = useSelector(state=>state);
 
-  // let a = 10;
-  let [a, b] = useState(10);
-
-  let demo = ()=>{
-    b(30);
+  let demo1 = ()=>{
+    dispatch(inc(1));
   }
 
   return (
-    <div className='row'>
-        <div className='col-md-12'>
-            <h1>{a}</h1>
-            <button onClick={demo}>OK</button>
-            <h2>About Page</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque accusamus atque tenetur saepe ipsum delectus iste sint deleniti? Laborum, sint placeat natus quas velit minus id deleniti totam harum dolor? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa rem amet non eaque laborum sed laboriosam voluptatem asperiores, cumque molestiae, aliquam recusandae ipsam voluptas esse eveniet ullam eos alias deserunt.</p>
+    <div className="container my-4">
+      <div className='row'>
+        <div className='col-md-8 offset-md-2'>
+          <h1>About Page</h1>
+          <h2>{counter}</h2>
+          <br />
+          <button onClick={demo1} className='btn btn-success'>+</button>
+          <button onClick={()=>dispatch(dec(2))}  className='btn btn-danger'>-</button>
+          <button onClick={()=> dispatch(multi(5))} className='btn btn-info'>X</button>
+          <button onClick={()=>dispatch(div(2))} className='btn btn-warning'>/</button>
         </div>
-    </div>
+      </div>
+    </div>    
   )
 }
 

@@ -3,10 +3,11 @@ import {NavLink} from 'react-router-dom'
 import axios from 'axios'
 import {API_URL} from '../../../util/API_URL'
 import './Header.css';
+import { useSelector } from 'react-redux'
 
 const Header = () => {
-
   
+  let cart = useSelector(state=>state);
 
 	let [allCate, setAllCate] = useState([]);
 
@@ -81,6 +82,7 @@ const Header = () => {
 										<li className="nav-item"><NavLink className="nav-link" to="/login">Login</NavLink></li>
 									</>
 								}
+          <li className="nav-item"><NavLink className="nav-link" to="/cart">My Cart {cart.length}</NavLink></li>
       </ul>
   </div>
 		</div>

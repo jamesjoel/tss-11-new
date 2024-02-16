@@ -1,11 +1,26 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { IMAGE_PATH } from '../../../util/API_URL'
 
 const Cart = () => {
+
+	let cart = useSelector(state=>state);
+	let total = 0;
+	
+
   return (
     <div className="cart-section mt-150 mb-150">
 		<div className="container">
 			<div className="row">
-				<div className="col-lg-8 col-md-12">
+				{
+					cart.length == 0 
+					? 
+					<div className='col-md-12'>
+						<div className='alert alert-info'>No Item Found in Your Cart</div>
+					</div>
+					:
+					<>
+					<div className="col-lg-8 col-md-12">
 					<div className="cart-table-wrap">
 						<table className="cart-table">
 							<thead className="cart-table-head">
@@ -14,35 +29,27 @@ const Cart = () => {
 									<th className="product-image">Product Image</th>
 									<th className="product-name">Name</th>
 									<th className="product-price">Price</th>
-									<th className="product-quantity">Quantity</th>
+									<th className="product-quantity">Discounted Price</th>
 									<th className="product-total">Total</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr className="table-body-row">
-									<td className="product-remove"><a href="#"><i className="far fa-window-close"></i></a></td>
-									<td className="product-image"><img src="/assets/img/products/product-img-1.jpg" alt=""/></td>
-									<td className="product-name">Strawberry</td>
-									<td className="product-price">$85</td>
-									<td className="product-quantity"><input type="number" placeholder="0"/></td>
-									<td className="product-total">1</td>
-								</tr>
-								<tr className="table-body-row">
-									<td className="product-remove"><a href="#"><i className="far fa-window-close"></i></a></td>
-									<td className="product-image"><img src="/assets/img/products/product-img-2.jpg" alt=""/></td>
-									<td className="product-name">Berry</td>
-									<td className="product-price">$70</td>
-									<td className="product-quantity"><input type="number" placeholder="0"/></td>
-									<td className="product-total">1</td>
-								</tr>
-								<tr className="table-body-row">
-									<td className="product-remove"><a href="#"><i className="far fa-window-close"></i></a></td>
-									<td className="product-image"><img src="/assets/img/products/product-img-3.jpg" alt=""/></td>
-									<td className="product-name">Lemon</td>
-									<td className="product-price">$35</td>
-									<td className="product-quantity"><input type="number" placeholder="0"/></td>
-									<td className="product-total">1</td>
-								</tr>
+								{
+									cart.map(value=>{
+										total = total + (value.price - (value.price * value.discount/100));
+										return(<tr key={value._id} className="table-body-row">
+											<td className="product-remove"><a href="#"><i className="far fa-window-close"></i></a></td>
+											<td className="product-image"><img src={`${IMAGE_PATH}/${value.image}`} alt=""/></td>
+											<td className="product-name">{value.title}</td>
+											<td className="product-price">{value.price.toFixed(2)}</td>
+											<td className="product-price">{ (value.price - (value.price * value.discount/100)).toFixed(2)}</td>
+											{/* <td className="product-quantity"><input type="number" placeholder="0"/></td> */}
+											<td className="product-total">1</td>
+										</tr>)
+									})
+								}
+								
+
 							</tbody>
 						</table>
 					</div>
@@ -60,15 +67,15 @@ const Cart = () => {
 							<tbody>
 								<tr className="total-data">
 									<td><strong>Subtotal: </strong></td>
-									<td>$500</td>
+									<td>{total.toFixed(2)}</td>
 								</tr>
 								<tr className="total-data">
 									<td><strong>Shipping: </strong></td>
-									<td>$45</td>
+									<td>500.00</td>
 								</tr>
 								<tr className="total-data">
 									<td><strong>Total: </strong></td>
-									<td>$545</td>
+									<td>{(total+500).toFixed(2)}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -88,6 +95,8 @@ const Cart = () => {
 						</div>
 					</div>
 				</div>
+					</>
+				}
 			</div>
 		</div>
 	</div>

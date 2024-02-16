@@ -3,12 +3,31 @@ import React, {useState, useEffect, useRef} from 'react'
 import { useParams, NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { API_URL } from '../../../util/API_URL'
+import { useDispatch } from 'react-redux'
+import {add} from '../../../redux/CartSlice'
+import { IMAGE_PATH } from '../../../util/API_URL'
+
 
 const Product = () => {
+	let dispatch = useDispatch();
 	let [pro, setPro] = useState({});
 	let param = useParams();
 	let navigate = useNavigate();
 	let btn = useRef()
+	let btn2 = useRef();
+
+	let [a, setA] = useState(new Date());
+
+	useEffect(()=>{
+		demo();
+	}, [])
+
+	let demo = ()=>{
+		setA(new Date())
+		setTimeout(()=>{
+			demo();
+		}, 3000);
+	}
 	
 
 	useEffect(()=>{
@@ -34,14 +53,24 @@ const Product = () => {
 		}
 	}
 
+	let addToCart = (obj)=>{
+		dispatch(add(obj));
+		setTimeout(()=>{
+			btn2.current.click();
+		}, 2000)
+	}
+
   return (
 	<>
     <div className="single-product mt-150 mb-150">
 		<div className="container">
+	{/* <h1>{a.getHours()+":"+a.getMinutes()+":"+a.getSeconds()}</h1> */}
+	
+	
 			<div className="row">
 				<div className="col-md-5">
 					<div className="single-product-img">
-						<img src="/assets/img/products/product-img-5.jpg" alt=""/>
+						<img style={{width : "100%"}} src={`${IMAGE_PATH}/${pro.image}`} alt=""/>
 					</div>
 				</div>
 				{
@@ -54,7 +83,8 @@ const Product = () => {
 						<p>{pro.detail}</p>
 						<div className="single-product-form">
 							
-							<NavLink to="/cart" className="cart-btn m-2"><i className="fas fa-shopping-cart"></i> Add to Cart</NavLink>
+							{/* <NavLink to="/cart" className="cart-btn m-2"><i className="fas fa-shopping-cart"></i> Add to Cart</NavLink> */}
+							<button data-toggle="modal" data-target="#showCartModal" onClick={()=>addToCart(pro)} className='btn buy-btn m-2'><i className="fas fa-shopping-cart"></i> Add to Cart</button>
 							<button onClick={checkLogin} className="btn buy-btn m-2"><i className="fas fa fa-shopping-bag"></i> Buy Now</button>
 							<p><strong>Categories: </strong>{pro.category}</p>
 						</div>
@@ -83,6 +113,23 @@ const Product = () => {
 			</div>
 		</div>
 	</div>
+
+	<div className='modal fade' id='showCartModal'>
+		<div className="modal-dialog">
+			<div className="modal-content">
+				<div className="modal-header">
+					<h4>Message !</h4>
+				</div>
+				<div className="modal-body">
+					<p>One Item added in your cart Successfuly !!!</p>
+					<button ref={btn2} style={{display : "none"}} data-dismiss="modal">close</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
 	</>
   )
 }

@@ -18,7 +18,7 @@ const Header = () => {
 	},[])
 
   return (
-    <nav className="navbar navbar-expand-md sticky-wrapper navbar-dark" style={{backgroundColor : "#000"}}>
+    <nav className="navbar navbar-expand-md sticky-top navbar-dark" style={{backgroundColor : "#000"}}>
   
 		<div className='container'>
 		<a className="navbar-brand" href="#">

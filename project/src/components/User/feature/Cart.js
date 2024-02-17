@@ -1,12 +1,27 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { IMAGE_PATH } from '../../../util/API_URL'
+import { clear, clearOne } from '../../../redux/CartSlice'
+
 
 const Cart = () => {
 
+	let disp = useDispatch();
 	let cart = useSelector(state=>state);
 	let total = 0;
+
+	useEffect(()=>{
+		window.scrollTo(0, 0)
+	},[])
+
 	
+	let clearCart = ()=>{
+		disp(clear());
+	}
+
+	let clearOneItem = (obj)=>{
+		disp(clearOne(obj));
+	}
 
   return (
     <div className="cart-section mt-150 mb-150">
@@ -22,7 +37,8 @@ const Cart = () => {
 					<>
 					<div className="col-lg-8 col-md-12">
 					<div className="cart-table-wrap">
-						<table className="cart-table">
+						<button data-target="#askModal" data-toggle="modal" className='btn btn-danger'>Clear Cart</button>
+						<table className="cart-table my-2">
 							<thead className="cart-table-head">
 								<tr className="table-head-row">
 									<th className="product-remove"></th>
@@ -38,7 +54,7 @@ const Cart = () => {
 									cart.map(value=>{
 										total = total + (value.price - (value.price * value.discount/100));
 										return(<tr key={value._id} className="table-body-row">
-											<td className="product-remove"><a href="#"><i className="far fa-window-close"></i></a></td>
+											<td className="product-remove"><button onClick={()=>clearOneItem(value)} style={{border : "none"}}><i className="far fa-window-close"></i></button></td>
 											<td className="product-image"><img src={`${IMAGE_PATH}/${value.image}`} alt=""/></td>
 											<td className="product-name">{value.title}</td>
 											<td className="product-price">{value.price.toFixed(2)}</td>
@@ -95,6 +111,24 @@ const Cart = () => {
 						</div>
 					</div>
 				</div>
+
+				<div className='modal fade' id="askModal">
+					<div className="modal-dialog">
+						<div className="modal-content">
+							<div className="modal-header">
+								<h3>Message !</h3>
+							</div>
+							<div className="modal-body">
+								<p>Are You sure want to Clear Your Cart Items</p>
+							</div>
+							<div className="modal-footer">
+								<button className='btn btn-danger btn-sm' data-dismiss="modal">Close</button>
+								<button onClick={clearCart} className='btn btn-info btn-sm' data-dismiss="modal">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>				
+
 					</>
 				}
 			</div>

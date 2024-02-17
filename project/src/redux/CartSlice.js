@@ -6,10 +6,16 @@ let CartSlice = createSlice({
     reducers : {
         add(state, action){
             state.push(action.payload)
+        },
+        clear(state, action){
+            return [];
+        },
+        clearOne(state, action){
+            return state.filter(value=>value._id!=action.payload._id);
         }
     }
 });
 
 export default CartSlice.reducer;
 
-export let { add } = CartSlice.actions;
+export let { add, clear, clearOne } = CartSlice.actions;

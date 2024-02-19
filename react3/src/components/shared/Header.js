@@ -1,7 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+
+  let emp = useSelector(state=>state);
+
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
 
@@ -9,7 +13,10 @@ const Header = () => {
     
     <ul className="navbar-nav">
       <li className="nav-item">
-        <NavLink className="nav-link" to="/">Home</NavLink>
+        <NavLink className="nav-link" to="/">Home ({emp.length})</NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink className="nav-link" to="/employee">Employee</NavLink>
       </li>
       <li className="nav-item">
         <NavLink className="nav-link" to="/product">Product</NavLink>

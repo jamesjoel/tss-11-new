@@ -11,12 +11,14 @@ import AboutModule from '../modules/AboutModule'
 import TeacherModule from '../modules/TeacherModule'
 import Teacher from '../components/featured/Teacher'
 import Status from '../components/featured/Status'
+import Employee from '../components/featured/Employee'
 
 const AllRoutes = () => {
   return (
     <Routes>
         <Route path='' element={<Home />} />
         <Route path='product' element={<Product />} />
+        <Route path='employee' element={<Employee/>} />
         <Route path='details/:x' element={<Details />} />
         <Route path='student' element={<Student />} />
         {/* <Route path='about' element={<About />} />

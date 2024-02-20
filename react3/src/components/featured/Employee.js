@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { add, del } from '../../redux/EmployeeSlice'
+import { addEmp, delEmp } from '../../redux/EmployeeSlice'
 
 
 const Employee = () => {
@@ -15,8 +15,7 @@ const Employee = () => {
   let emp = useSelector(state=>state); 
 
   let submit = ()=>{
-    disp(add(employee));
-   
+   disp(addEmp(employee))   
   }
   let empty = ()=>{
     
@@ -44,7 +43,7 @@ const Employee = () => {
                   <td>{index+1}</td>
                   <td>{value.name}</td>
                   <td>{value.salary}</td>
-                  <td><button onClick={()=>disp(del(value))} className='btn btn-danger'>Del</button></td>
+                  <td><button onClick={()=>disp(delEmp(value))} className='btn btn-danger'>Del</button></td>
                 </tr>)
               }
             </tbody>

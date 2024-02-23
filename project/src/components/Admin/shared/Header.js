@@ -1,7 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+  let checkLogin = useSelector(state=>state.AdminAuthSlice);
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
   <div className="container-fluid">
@@ -11,7 +13,7 @@ const Header = () => {
     </button>
     <div className="collapse navbar-collapse" id="collapsibleNavbar">
       {
-        localStorage.getItem("admin-token") ? <ul className="navbar-nav">
+        checkLogin ? <ul className="navbar-nav">
         <li className="nav-item">
           <NavLink className="nav-link" to="/admin/dashboard">Dashborad</NavLink>
         </li>

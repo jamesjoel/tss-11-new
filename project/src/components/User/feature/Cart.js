@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { IMAGE_PATH } from '../../../util/API_URL'
-import { clear, clearOne } from '../../../redux/CartSlice'
+import { clear } from '../../../redux/CartSlice'
 
 
 const Cart = () => {
 
 	let disp = useDispatch();
-	let cart = useSelector(state=>state);
+	let cart = useSelector(state=>state.CartSlice);
 	let total = 0;
 
 	useEffect(()=>{
@@ -20,7 +20,7 @@ const Cart = () => {
 	}
 
 	let clearOneItem = (obj)=>{
-		disp(clearOne(obj));
+		// disp(clearOne(obj));
 	}
 
   return (

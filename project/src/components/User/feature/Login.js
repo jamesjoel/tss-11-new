@@ -5,9 +5,12 @@ import axios from 'axios';
 import {API_URL} from '../../../util/API_URL';
 import {useNavigate} from 'react-router-dom'
 import ProductBox from '../shared/ProductBox';
+import { useDispatch } from 'react-redux';
+import { isLoggedin } from '../../../redux/UserAuthSlice'
+import {getAllData} from '../../../redux/CartSlice'
 
 const Login = () => {
-
+    let disp = useDispatch();
     let navigate = useNavigate();
     let [errMsg, setErrMsg] = useState("");
     let loginFrm = useFormik({
@@ -27,6 +30,8 @@ const Login = () => {
                     // console.log(response.data);
                     localStorage.setItem("name", response.data.name);
                     localStorage.setItem("access-token", response.data.token)
+                    disp(isLoggedin(true));
+                    disp(getAllData());
                     navigate("/");
                 }
 

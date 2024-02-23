@@ -3,11 +3,23 @@ import {NavLink} from 'react-router-dom'
 import axios from 'axios'
 import {API_URL} from '../../../util/API_URL'
 import './Header.css';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { isLoggedin } from '../../../redux/UserAuthSlice'
+
 
 const Header = () => {
-  
-  let cart = useSelector(state=>state);
+  let disp = useDispatch();
+  useEffect(()=>{
+    if(localStorage.getItem("access-token")){
+      disp(isLoggedin(true))
+    }else{
+      
+      disp(isLoggedin(false))
+    }
+  },[])
+
+  let cart = useSelector(state=>state.CartSlice);
+  let checkLoggedIn = useSelector(state=>state.UserAuthSlice);
 
 	let [allCate, setAllCate] = useState([]);
 
@@ -66,7 +78,7 @@ const Header = () => {
               </ul>
       </li>
       {
-									localStorage.getItem("access-token") ? 
+									checkLoggedIn ? 
 									<>
 										<li className='nav-item dropdown'>
                       <NavLink className="nav-link dropdown-toggle" data-toggle="dropdown" to="#">{localStorage.getItem("name")}</NavLink>

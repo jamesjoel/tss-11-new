@@ -4,9 +4,11 @@ import AdminLoginSchema from '../../../schemas/AdminLoginSchema'
 import { API_URL } from '../../../util/API_URL';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import {useDispatch} from 'react-redux'
+import {isLoggedInAdmin} from '../../../redux/AdminAuthSlice'
 
 const Login = () => {
-
+  let disp = useDispatch();
   let [errMsg, setErrMsg] = useState("");
   let navigate = useNavigate();
 
@@ -29,6 +31,7 @@ const Login = () => {
         if(response.data.success == true)
         {
           localStorage.setItem("admin-token", response.data.token);
+          disp(isLoggedInAdmin(true));
           navigate("/admin/dashboard");
         }
 

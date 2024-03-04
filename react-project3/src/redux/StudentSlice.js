@@ -11,8 +11,14 @@ let delStu = createAsyncThunk("del", async(obj)=>{
 });
 
 let addStu = createAsyncThunk("add", async(obj)=>{
-    await axios.post("http://localhost:8080/student/", obj);
+    let response =await axios.post("http://localhost:8080/student/", obj);
+    return response.data;
+})
+
+let updateStu = createAsyncThunk("update", async(obj)=>{ // { name : "vi", age : 20, id : 121 }
+    await axios.put("http://localhost:8080/student/"+obj.id, obj)
     return obj;
+
 })
 
 let StudentSlice = createSlice({
@@ -27,10 +33,21 @@ let StudentSlice = createSlice({
         });
         builder.addCase(addStu.fulfilled, (state, action)=>{
             state.push(action.payload);
+        });
+        builder.addCase(updateStu.fulfilled, (state, action)=>{ // action.payload = { name : "vi", age : 20, id : 121 }
+            return state.map(value=>{
+                if(value.id == action.payload.id)
+                {
+                    return action.payload;
+                }
+                else{
+                    return value;
+                }
+            })
         })
     }
 })
 
 export default StudentSlice.reducer;
 
-export { getAll, delStu, addStu }
+export { getAll, delStu, addStu, updateStu }

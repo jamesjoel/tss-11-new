@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {delStu, addStu} from '../redux/StudentSlice'
+import {delStu, addStu, updateStu} from '../redux/StudentSlice'
 
 const Student = () => {
 
@@ -11,7 +11,21 @@ const Student = () => {
     dispatch(delStu(obj));
   }
   let add = ()=>{
-    dispatch(addStu(newStu));
+    if(newStu.id){
+      dispatch(updateStu(newStu));
+
+    }else{
+
+      dispatch(addStu(newStu));
+    }
+    setNewStu({ name : "", age : ""});
+  }
+
+
+  let edit = (obj)=>{
+    setNewStu(obj);
+  }
+  let reset = ()=>{
     setNewStu({ name : "", age : ""});
   }
   return (
@@ -25,7 +39,10 @@ const Student = () => {
             <input type='text' value={newStu.age} onChange={(event)=>setNewStu({...newStu, age : event.target.value})} className='form-control' placeholder='Age'/>
           </div>
           <div className='col-md-2'>
-            <button onClick={add} className='btn btn-primary'>Add</button>
+            <button onClick={add} className='btn btn-primary'>{newStu.id ? 'Update' : 'Add' }</button>
+            {
+              newStu.id ? <button onClick={reset} className='btn btn-danger'>X</button> : ''
+            }
           </div>
 
         </div>
@@ -36,6 +53,7 @@ const Student = () => {
               <th>S.No.</th>
               <th>Name</th>
               <th>Age</th>
+              <th>Edit</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -45,6 +63,7 @@ const Student = () => {
                 <td>{index+1}</td>
                 <td>{value.name}</td>
                 <td>{value.age}</td>
+                <td><button onClick={()=>edit(value)} className='btn btn-info'>Edit</button></td>
                 <td><button onClick={()=>del(value)} className='btn btn-danger'>Delete</button></td>
               </tr>)
             }

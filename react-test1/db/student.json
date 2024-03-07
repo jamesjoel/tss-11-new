@@ -1,0 +1,28 @@
+{
+  "student": [
+    {
+      "id": "7246",
+      "name": "Rohit",
+      "class": "4",
+      "contact": "21524548",
+      "gender": "male",
+      "address": "sdfg sdfg sdfgs"
+    },
+    {
+      "id": "4ea0",
+      "name": "jaya",
+      "class": "9",
+      "contact": "524545",
+      "gender": "female",
+      "address": "sdrg sdfg sdfg"
+    },
+    {
+      "id": "d8e0",
+      "name": "Nidhi Johi",
+      "class": "6",
+      "contact": "887744",
+      "gender": "female",
+      "address": "ppeotritorvbd dsfg sdf"
+    }
+  ]
+}
